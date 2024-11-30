@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+.env
+.venv
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Model files and caches
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.model
+data/vector_store/
+vector_store*
+sentence-transformers/
+models/cache/
+.cache/
+.vector_cache/
+
+# Hugging Face specific
+.huggingface/
+hub/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Local development
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Project specific
+data/vector_store/faiss_store.pkl

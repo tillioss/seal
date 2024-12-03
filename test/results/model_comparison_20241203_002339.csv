@@ -1,0 +1,4 @@
+model,latency,total_tokens
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,84.63s,1536
+sshleifer/tiny-gpt2,28.54s,1536
+facebook/opt-125m,38.69s,1536

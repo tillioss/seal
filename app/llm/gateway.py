@@ -7,6 +7,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 
 from app.schemas import InterventionRequest, InterventionPlan
+from app.prompts.intervention import InterventionPrompt
 
 class LLMGateway(ABC):
     """Abstract base class for LLM providers."""
@@ -30,52 +31,23 @@ class GeminiGateway(LLMGateway):
         
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel('gemini-pro')
-        
-        # Load prompt template
-        self.prompt_template = """You are an expert Educational Intervention Specialist focusing on emotional intelligence development in children.
-
-TASK: Create a detailed intervention plan for a class showing difficulties in emotional recognition and expression.
-
-CLASS INFORMATION:
-- Class ID: {class_id}
-- Number of Students: {num_students}
-- Primary Area Needing Intervention: {deficient_area}
-
-CURRENT PERFORMANCE:
-EMT Score Averages:
-- EMT1 (Visual Matching): {emt1_avg:.2f}%
-- EMT2 (Emotion Description): {emt2_avg:.2f}%
-- EMT3 (Expression Labeling): {emt3_avg:.2f}%
-- EMT4 (Label Matching): {emt4_avg:.2f}%
-
-Your response MUST be in valid JSON format matching this schema:
-{schema}
-
-Focus on creating specific, actionable strategies that address the deficient area while maintaining development in other areas.
-Ensure all response fields are properly filled and match the schema exactly."""
 
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
     def generate_intervention(self, request: InterventionRequest) -> InterventionPlan:
         # Calculate averages
         scores = request.scores
-        emt_avgs = {
+        prompt_data = {
+            'class_id': request.metadata.class_id,
+            'num_students': request.metadata.num_students,
+            'deficient_area': request.metadata.deficient_area,
             'emt1_avg': sum(scores.EMT1) / len(scores.EMT1),
             'emt2_avg': sum(scores.EMT2) / len(scores.EMT2),
             'emt3_avg': sum(scores.EMT3) / len(scores.EMT3),
             'emt4_avg': sum(scores.EMT4) / len(scores.EMT4)
         }
         
-        # Get schema as dict for prompt
-        schema = InterventionPlan.model_json_schema()
-        
-        # Format prompt
-        prompt = self.prompt_template.format(
-            class_id=request.metadata.class_id,
-            num_students=request.metadata.num_students,
-            deficient_area=request.metadata.deficient_area,
-            schema=json.dumps(schema, indent=2),
-            **emt_avgs
-        )
+        # Get prompt from template
+        prompt = InterventionPrompt.get_prompt('gemini', prompt_data)
         
         # Generate response
         response = self.model.generate_content(prompt)

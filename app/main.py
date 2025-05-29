@@ -5,8 +5,15 @@ from pythonjsonlogger import jsonlogger
 import logging
 import sys
 
-from app.schemas import InterventionRequest, InterventionPlan, HealthResponse
+from app.schemas import (
+    InterventionRequest, 
+    InterventionPlan, 
+    HealthResponse,
+    CurriculumRequest, 
+    CurriculumResponse
+)
 from app.llm.gateway import LLMGatewayFactory
+from app.llm.curriculum_gateway import GeminiCurriculumGateway
 
 # Configure JSON logging
 logger = logging.getLogger()
@@ -32,11 +39,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize LLM gateway
+# Initialize gateways
 try:
     llm_gateway = LLMGatewayFactory.create(os.getenv("LLM_PROVIDER", "gemini"))
+    curriculum_gateway = GeminiCurriculumGateway()
 except Exception as e:
-    logger.error(f"Failed to initialize LLM gateway: {str(e)}")
+    logger.error(f"Failed to initialize gateways: {str(e)}")
     sys.exit(1)
 
 @app.post("/score", response_model=InterventionPlan)
@@ -50,10 +58,30 @@ async def generate_intervention_plan(request: InterventionRequest):
         
         plan = llm_gateway.generate_intervention(request)
         
-        logger.info("Successfully generated intervention plan", extra={
-            "class_id": request.metadata.class_id,
-            "num_strategies": len(plan.strategies)
+        logger.info("Successfully generated intervention plan")
+        
+        return plan
+    
+    except ValueError as e:
+        logger.error("Validation error", extra={"error": str(e)})
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        logger.error("Unexpected error", extra={"error": str(e)})
+        raise HTTPException(status_code=500, detail="Internal server error")
+
+@app.post("/curriculum", response_model=CurriculumResponse)
+async def generate_curriculum_plan(request: CurriculumRequest):
+    """Generate a curriculum-based intervention plan."""
+    try:
+        logger.info("Generating curriculum plan", extra={
+            "grade_level": request.grade_level,
+            "skill_areas": [area.value for area in request.skill_areas],
+            "score": request.score
         })
+        
+        plan = curriculum_gateway.generate_curriculum_plan(request)
+        
+        logger.info("Successfully generated curriculum plan")
         
         return plan
     
@@ -68,10 +96,14 @@ async def generate_intervention_plan(request: InterventionRequest):
 async def health_check():
     """Check service health."""
     llm_healthy = llm_gateway.health_check()
+    curriculum_healthy = curriculum_gateway.health_check()
     
-    if not llm_healthy:
-        logger.error("LLM health check failed")
-        raise HTTPException(status_code=503, detail="LLM service unavailable")
+    if not (llm_healthy and curriculum_healthy):
+        logger.error("Health check failed", extra={
+            "llm_healthy": llm_healthy,
+            "curriculum_healthy": curriculum_healthy
+        })
+        raise HTTPException(status_code=503, detail="Service unhealthy")
     
     return HealthResponse(
         status="healthy",

@@ -29,13 +29,66 @@ SEAL is a REST API service that helps educators create personalized intervention
   - Structured logging
   - CORS support
 
+## Quick Start
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/seal.git
+   cd seal
+   ```
+
+2. **Set up a virtual environment**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Environment Setup**
+
+   Copy the example environment file and configure your settings:
+
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+   Required environment variables:
+
+   ```
+   GOOGLE_API_KEY=your_gemini_api_key_here
+   TOKENIZERS_PARALLELISM=false
+   LLM_PROVIDER=gemini  # Optional, defaults to gemini if not set
+   ```
+
+5. **Start the API server**
+
+   ```bash
+   python -m uvicorn app.main:app --reload
+   ```
+
+   The API will be available at `http://localhost:8000`
+
+6. **Access the API documentation**
+   - OpenAPI docs: `http://localhost:8000/docs`
+   - ReDoc: `http://localhost:8000/redoc`
+
 ## API Endpoints
 
-### POST /score
+### 1. Generate Intervention Plan
 
-Generate an intervention plan based on EMT scores.
+```bash
+POST /score
+```
 
-**Request Body**:
+Example request:
 
 ```json
 {
@@ -53,46 +106,11 @@ Generate an intervention plan based on EMT scores.
 }
 ```
 
-### GET /health
-
-Check service health status.
-
-## Quick Start
-
-1. Clone the repository:
+### 2. Health Check
 
 ```bash
-git clone https://github.com/yourusername/seal.git
-cd seal
+GET /health
 ```
-
-2. Create and activate a virtual environment:
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Set up environment variables:
-
-```bash
-cp .env.example .env
-# Edit .env with your Gemini API key
-```
-
-5. Run the service:
-
-```bash
-uvicorn app.main:app --reload
-```
-
-The API will be available at `http://localhost:8000` with interactive documentation at `/docs`.
 
 ## Project Structure
 
@@ -113,17 +131,49 @@ seal/
 └── docker-compose.yml
 ```
 
-## Configuration
+## Docker Support
 
-The service can be configured using environment variables:
+1. **Build the image**
 
-- `GOOGLE_API_KEY`: Your Gemini API key (required)
-- `LLM_PROVIDER`: LLM provider to use (default: "gemini")
+   ```bash
+   docker build -t seal .
+   ```
 
-## Development
+2. **Run the container**
 
-For development instructions and deployment guide, see [DEPLOYMENT.md](DEPLOYMENT.md).
+   ```bash
+   docker-compose up
+   ```
+
+## Testing
+
+Run the test suite:
+
+```bash
+pytest
+```
+
+## Requirements
+
+- Python 3.x
+- All dependencies listed in `requirements.txt`
+- Minimum 4GB RAM recommended
+- Internet connection for API access
+
+## Future Improvements
+
+1. Add support for real-time data input
+2. Implement more sophisticated analysis metrics
+3. Add a user interface for easier interaction
+4. Expand knowledge base templates
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Student data is organized in batches with:
+
+- Class metadata
+- EMT scores
+- Deficiency indicators
+- Performance metrics

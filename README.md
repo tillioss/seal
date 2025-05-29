@@ -4,23 +4,31 @@ An AI-powered system that analyzes student performance data and generates target
 
 ## Overview
 
-SEAL is a REST API service that helps educators create personalized intervention strategies for students based on their emotional intelligence metrics. It uses the Gemini Pro LLM to generate contextually relevant and age-appropriate interventions.
+SEAL is a REST API service that helps educators create personalized intervention strategies for students based on their emotional intelligence metrics. It uses Google's Gemini AI to generate contextually relevant and age-appropriate interventions through two specialized endpoints:
+
+1. **EMT Score-based Interventions** - Analyzes class performance data to generate targeted intervention plans
+2. **Curriculum-based Interventions** - Provides grade-appropriate emotional learning activities based on skill areas and performance scores
 
 ## Features
 
 - **EMT Score Analysis**: Process and analyze Emotional Measurement Task (EMT) scores across four key areas:
-
   - EMT1: Visual Emotion Matching
   - EMT2: Emotion Description
   - EMT3: Expression Labeling
   - EMT4: Label Matching
 
-- **Intervention Generation**: Creates detailed intervention plans including:
+- **Curriculum Interventions**: Grade-specific emotional learning activities for:
+  - Emotional Awareness
+  - Emotional Regulation
+  - Anger Management
+  - Supports grades 1, 2, and 5
 
+- **Intervention Generation**: Creates detailed intervention plans including:
   - Performance analysis
   - Targeted strategies
   - Implementation timelines
   - Success metrics
+  - Resource requirements
 
 - **API Features**:
   - JSON schema validation
@@ -28,6 +36,7 @@ SEAL is a REST API service that helps educators create personalized intervention
   - Health check endpoint
   - Structured logging
   - CORS support
+  - Data privacy compliance (aggregated scores only sent to AI)
 
 ## Quick Start
 
@@ -56,7 +65,7 @@ SEAL is a REST API service that helps educators create personalized intervention
    Copy the example environment file and configure your settings:
 
    ```bash
-   cp .env.example .env
+   cp example.env .env
    # Edit .env with your configuration
    ```
 
@@ -82,11 +91,13 @@ SEAL is a REST API service that helps educators create personalized intervention
 
 ## API Endpoints
 
-### 1. Generate Intervention Plan
+### 1. Generate EMT-based Intervention Plan
 
 ```bash
 POST /score
 ```
+
+Analyzes class EMT performance data and generates targeted intervention strategies.
 
 Example request:
 
@@ -106,11 +117,31 @@ Example request:
 }
 ```
 
-### 2. Health Check
+### 2. Generate Curriculum-based Intervention Plan
+
+```bash
+POST /curriculum
+```
+
+Provides grade-appropriate emotional learning activities based on skill areas and performance.
+
+Example request:
+
+```json
+{
+  "grade_level": "2",
+  "skill_areas": ["emotional_awareness", "emotional_regulation"],
+  "score": 65.5
+}
+```
+
+### 3. Health Check
 
 ```bash
 GET /health
 ```
+
+Returns the health status of both intervention and curriculum services.
 
 ## Project Structure
 
@@ -118,18 +149,34 @@ GET /health
 seal/
 ├── app/
 │   ├── llm/
-│   │   ├── gateway.py        # LLM gateway interface
+│   │   ├── gateway.py              # Base LLM gateway and EMT intervention implementation
+│   │   ├── curriculum_gateway.py   # Curriculum-specific intervention implementation
 │   │   └── __init__.py
 │   ├── prompts/
-│   │   ├── intervention.py   # Prompt templates
+│   │   ├── intervention.py         # EMT intervention prompt templates
+│   │   ├── curriculum.py           # Curriculum intervention prompt templates
 │   │   └── __init__.py
-│   ├── schemas.py           # Data models
-│   ├── main.py             # FastAPI application
+│   ├── schemas/
+│   │   ├── base.py                 # EMT score and intervention schemas
+│   │   ├── curriculum.py           # Curriculum-specific schemas
+│   │   └── __init__.py
+│   ├── main.py                     # FastAPI application with all endpoints
 │   └── __init__.py
 ├── requirements.txt
 ├── Dockerfile
-└── docker-compose.yml
+├── docker-compose.yml
+├── example.env                     # Environment configuration template
+└── README.md
 ```
+
+## Data Privacy
+
+SEAL is designed with data privacy in mind:
+
+- **Individual student scores** are accepted by the API but **never sent to the AI model**
+- Only **aggregated class averages** are included in prompts sent to the LLM
+- No personally identifiable information is processed or stored
+- All AI interactions use anonymized, class-level data only
 
 ## Docker Support
 
@@ -155,25 +202,43 @@ pytest
 
 ## Requirements
 
-- Python 3.x
+- Python 3.8+
 - All dependencies listed in `requirements.txt`
+- Google API key for Gemini AI
 - Minimum 4GB RAM recommended
 - Internet connection for API access
 
+## Supported Grade Levels & Skill Areas
+
+### Grade Levels
+- Grade 1
+- Grade 2  
+- Grade 5
+
+### Skill Areas
+- **Emotional Awareness**: Understanding and identifying emotions
+- **Emotional Regulation**: Managing and controlling emotional responses
+- **Anger Management**: Specific strategies for anger control and expression
+
 ## Future Improvements
 
-1. Add support for real-time data input
-2. Implement more sophisticated analysis metrics
-3. Add a user interface for easier interaction
-4. Expand knowledge base templates
+1. Add support for additional grade levels
+2. Expand skill areas and intervention types
+3. Implement real-time data input capabilities
+4. Add a user interface for easier interaction
+5. Develop assessment tracking features
+6. Add multi-language support
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Student data is organized in batches with:
+## Contributing
 
-- Class metadata
-- EMT scores
-- Deficiency indicators
-- Performance metrics
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
+
+For questions or support, please open an issue on GitHub.

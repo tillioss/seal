@@ -28,6 +28,11 @@ Guidelines:
 3. Consider the developmental stage and capabilities
 4. Provide a clear implementation order
 5. Ensure all activities are age-appropriate and engaging
+6. For strategy titles, keep them under 50 characters.
+7. For descriptions, keep them under 200 characters.
+8. For implementation steps, provide exactly 4 clear, concise steps.
+9. For success metrics, provide 2-3 clear, measurable metrics.
+
 
 Ensure your response is properly formatted and includes all required fields according to the schema."""
 
@@ -119,4 +124,4 @@ Note: Provide only the JSON response without any additional text or explanation.
             'openai': cls.OPENAI_TEMPLATE
         }.get(provider, cls.BASE_TEMPLATE)
         
-        return template.format(**data) 
+        return template

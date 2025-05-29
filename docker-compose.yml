@@ -8,6 +8,7 @@ services:
     environment:
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
       - LLM_PROVIDER=gemini
+      - TOKENIZERS_PARALLELISM=false
     volumes:
       - ./app:/app/app
     healthcheck:

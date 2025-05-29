@@ -1,6 +1,5 @@
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, validator
-import numpy as np
 
 class EMTScores(BaseModel):
     EMT1: List[float] = Field(..., description="Visual Emotion Matching scores")
@@ -44,7 +43,7 @@ class SuccessMetrics(BaseModel):
 
 class InterventionPlan(BaseModel):
     analysis: str = Field(..., description="Analysis of performance data")
-    strategies: List[InterventionStrategy] = Field(..., min_items=3, max_items=5)
+    strategies: List[InterventionStrategy] = Field(..., min_items=1, max_items=5)
     timeline: Dict[str, List[str]] = Field(..., description="4-week implementation timeline")
     success_metrics: SuccessMetrics
 

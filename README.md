@@ -30,6 +30,13 @@ SEAL is a REST API service that helps educators create personalized intervention
   - Success metrics
   - Resource requirements
 
+- **🛡️ Safety System**: Comprehensive content validation to ensure all AI-generated content is appropriate for children:
+  - Multi-layer safety validation with severity classification
+  - Child-focused protection against harmful or inappropriate content
+  - Configurable safety levels for different environments
+  - Real-time content filtering and violation logging
+  - See [SAFETY.md](SAFETY.md) for detailed documentation
+
 - **API Features**:
   - JSON schema validation
   - Automatic retries with exponential backoff

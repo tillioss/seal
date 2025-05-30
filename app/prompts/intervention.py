@@ -47,6 +47,14 @@ class InterventionPrompt:
 
 TASK: Create a detailed intervention plan for a class showing difficulties in emotional recognition and expression.
 
+SAFETY GUIDELINES - CRITICAL:
+- Use ONLY positive, encouraging, and age-appropriate language
+- Focus on growth, learning, and development opportunities
+- Avoid any negative, harmful, or inappropriate content
+- Use simple language that children can understand
+- Ensure all activities are safe and suitable for the classroom
+- Promote inclusivity and respect for all students
+
 CLASS INFORMATION:
 - Class ID: {class_id}
 - Number of Students: {num_students}
@@ -73,8 +81,9 @@ IMPORTANT INSTRUCTIONS:
 5. Include a 4-week timeline
 6. Provide measurable success metrics
 7. Double-check that your response is valid JSON
+8. ENSURE ALL CONTENT IS POSITIVE, SAFE, AND AGE-APPROPRIATE
 
-Focus on creating specific, actionable strategies that address the deficient area while maintaining development in other areas."""
+Focus on creating specific, actionable strategies that address the deficient area while maintaining development in other areas. All content must be suitable for teachers to use with children in educational settings."""
 
     GEMINI_TEMPLATE = BASE_TEMPLATE + """
 FINAL CHECK:

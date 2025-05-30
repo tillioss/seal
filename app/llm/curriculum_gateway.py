@@ -2,6 +2,8 @@
 
 import json
 import os
+import uuid
+import logging
 from tenacity import retry, stop_after_attempt, wait_exponential
 import google.generativeai as genai
 from dotenv import load_dotenv
@@ -10,7 +12,11 @@ from app.llm.gateway import LLMGateway
 from app.schemas.curriculum import CurriculumRequest, CurriculumResponse
 from app.schemas import InterventionRequest, InterventionPlan
 from app.prompts.curriculum import CurriculumPrompt
+from app.safety.guardrails import LLMSafetyValidator
+from app.safety.config import DEFAULT_SAFETY_CONFIG
 import typing_extensions as typing
+
+logger = logging.getLogger(__name__)
 
 class Implementation(typing.TypedDict):
     steps: typing.List[str]
@@ -25,7 +31,7 @@ class CurriculumIntervention(typing.TypedDict):
     implementation: Implementation
     intended_purpose: str
 
-class CurriculumResponse(typing.TypedDict):
+class CurriculumResponseSchema(typing.TypedDict):
     recommended_interventions: typing.List[CurriculumIntervention]
     skill_focus: typing.List[str]
     implementation_order: typing.List[str]
@@ -35,17 +41,10 @@ class CurriculumGateway(LLMGateway):
 
     @retry(stop=stop_after_attempt(1), wait=wait_exponential(multiplier=1, min=4, max=10))
     def generate_curriculum_plan(self, request: CurriculumRequest):
-        """Generate a curriculum-based intervention plan.
+        """Generate validated curriculum plan with safety checks."""
+        # Generate unique request ID for tracking
+        request_id = str(uuid.uuid4())
         
-        Args:
-            request: The curriculum request containing grade level and score
-            
-        Returns:
-            A curriculum response with recommended interventions
-            
-        Raises:
-            ValueError: If the LLM response cannot be parsed
-        """
         # Prepare data for prompt
         prompt_data = {
             'grade_level': request.grade_level,
@@ -72,6 +71,19 @@ class CurriculumGateway(LLMGateway):
                 response_json = json.loads(json_str)
             else:
                 raise ValueError("Could not find valid JSON in response")
+
+        # Safety validation
+        is_safe, violation = self.safety_validator.validate_content(response_json)
+        
+        if not is_safe:
+            error_msg = violation.message if violation else "Content safety validation failed"
+            raise ValueError(f"Safety violation: {error_msg}")
+
+        logger.info("Validated curriculum response generated", extra={
+            "request_id": request_id,
+            "grade_level": request.grade_level,
+            "skill_areas": [area.value for area in request.skill_areas]
+        })
 
         return response_json
 
@@ -107,16 +119,17 @@ class GeminiCurriculumGateway(CurriculumGateway):
         
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel('gemini-1.5-flash-002')
+        
+        # Initialize safety validator
+        self.safety_validator = LLMSafetyValidator(DEFAULT_SAFETY_CONFIG)
 
     def _generate_content(self, prompt: str) -> str:
         """Generate content using the Gemini model."""
-
-
         response = self.model.generate_content(
             prompt,
             generation_config=genai.GenerationConfig(
                 response_mime_type="application/json",
-                response_schema=CurriculumResponse,
+                response_schema=CurriculumResponseSchema,
         ))
         
         if not response.text:

@@ -1,61 +1,66 @@
+"""Main FastAPI application for SEAL API."""
+
 import os
+import logging
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pythonjsonlogger import jsonlogger
-import logging
-import sys
+from dotenv import load_dotenv
 
-from app.schemas import (
-    InterventionRequest, 
-    InterventionPlan, 
-    HealthResponse,
-    CurriculumRequest, 
-    CurriculumResponse
-)
+from app.schemas import InterventionRequest, InterventionPlan, HealthResponse
+from app.schemas.curriculum import CurriculumRequest, CurriculumResponse
 from app.llm.gateway import LLMGatewayFactory
 from app.llm.curriculum_gateway import GeminiCurriculumGateway
 
-# Configure JSON logging
-logger = logging.getLogger()
-logHandler = logging.StreamHandler(sys.stdout)
-formatter = jsonlogger.JsonFormatter()
-logHandler.setFormatter(formatter)
-logger.addHandler(logHandler)
-logger.setLevel(logging.INFO)
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Load environment variables
+load_dotenv()
+
+# Initialize LLM gateways
+llm_gateway = LLMGatewayFactory.create("gemini")
+curriculum_gateway = GeminiCurriculumGateway()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan manager."""
+    logger.info("Starting SEAL API", extra={
+        "environment": os.getenv('ENVIRONMENT', 'production'),
+        "llm_provider": os.getenv("LLM_PROVIDER", "gemini")
+    })
+    yield
+    logger.info("Shutting down SEAL API")
 
 # Create FastAPI app
 app = FastAPI(
     title="SEAL API",
-    description="Social Emotional Adaptive Learning API",
-    version="1.0.0"
+    description="Social Emotional Adaptive Learning API for generating intervention plans",
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Initialize gateways
-try:
-    llm_gateway = LLMGatewayFactory.create(os.getenv("LLM_PROVIDER", "gemini"))
-    curriculum_gateway = GeminiCurriculumGateway()
-except Exception as e:
-    logger.error(f"Failed to initialize gateways: {str(e)}")
-    sys.exit(1)
-
 @app.post("/score", response_model=InterventionPlan)
 async def generate_intervention_plan(request: InterventionRequest):
-    """Generate an intervention plan based on EMT scores."""
+    """Generate an intervention plan based on student scores."""
     try:
         logger.info("Generating intervention plan", extra={
             "class_id": request.metadata.class_id,
             "deficient_area": request.metadata.deficient_area
         })
         
+        # Generate validated intervention plan directly
         plan = llm_gateway.generate_intervention(request)
         
         logger.info("Successfully generated intervention plan")
@@ -79,7 +84,9 @@ async def generate_curriculum_plan(request: CurriculumRequest):
             "score": request.score
         })
         
-        plan = curriculum_gateway.generate_curriculum_plan(request)
+        # Generate validated curriculum plan directly
+        plan_data = curriculum_gateway.generate_curriculum_plan(request)
+        plan = CurriculumResponse(**plan_data)
         
         logger.info("Successfully generated curriculum plan")
         

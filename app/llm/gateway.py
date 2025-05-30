@@ -2,14 +2,16 @@ from abc import ABC, abstractmethod
 import os
 import json
 import logging
+import uuid
 from tenacity import retry, stop_after_attempt, wait_exponential, before_log, after_log
 import google.generativeai as genai
 from dotenv import load_dotenv
 import typing_extensions as typing
 
-
 from app.schemas import InterventionRequest, InterventionPlan
 from app.prompts.intervention import InterventionPrompt
+from app.safety.guardrails import LLMSafetyValidator
+from app.safety.config import DEFAULT_SAFETY_CONFIG
 
 logger = logging.getLogger(__name__)
 
@@ -60,19 +62,9 @@ class GeminiGateway(LLMGateway):
             "top_k": 40,
             "max_output_tokens": 2048,
         }
-
-    def _clean_response(self, text: str) -> str:
-        """Clean the response text to extract valid JSON."""
-        # Remove any markdown code block indicators
-        text = text.replace("```json", "").replace("```", "")
         
-        # Find the first '{' and last '}'
-        start = text.find('{')
-        end = text.rfind('}')
-        
-        if start >= 0 and end > start:
-            return text[start:end + 1]
-        return text
+        # Initialize safety validator
+        self.safety_validator = LLMSafetyValidator(DEFAULT_SAFETY_CONFIG)
 
     @retry(
         stop=stop_after_attempt(1),
@@ -81,7 +73,11 @@ class GeminiGateway(LLMGateway):
         after=after_log(logger, logging.INFO)
     )
     def generate_intervention(self, request: InterventionRequest) -> InterventionPlan:
+        """Generate validated intervention plan with safety checks."""
         try:
+            # Generate unique request ID for tracking
+            request_id = str(uuid.uuid4())
+            
             # Calculate averages
             scores = request.scores
             prompt_data = {
@@ -113,47 +109,54 @@ class GeminiGateway(LLMGateway):
             if not response.text:
                 raise ValueError("Empty response from LLM")
             
-            try:
-                # Parse the response as JSON
-                response_json = json.loads(response.text)
-                
-                # Convert the response to match InterventionPlan schema
-                intervention_plan = {
-                    "analysis": f"Analysis for class {response_json['classId']} with {response_json['numberOfStudents']} students focusing on {response_json['deficientArea']}.",
-                    "strategies": [
-                        {
-                            "activity": strategy.get("title", ""),
-                            "implementation": strategy.get("implementationPlan", []),
-                            "expected_outcomes": strategy.get("successMetrics", []),
-                            "time_allocation": "30 minutes per session",  # Default value
-                            "resources": ["Emotion cards", "Activity materials"]  # Default values
-                        }
-                        for strategy in response_json["strategies"]
-                    ],
-                    "timeline": {
-                        f"week{week['week']}": week.get("activities", [])
-                        for week in response_json["timeline"]
-                    },
-                    "success_metrics": {
-                        "quantitative": [m for m in response_json["overallSuccessMetrics"] if "%" in m],
-                        "qualitative": [m for m in response_json["overallSuccessMetrics"] if "%" not in m],
-                        "assessment_methods": ["Weekly assessments", "Observation records", "Student feedback"]
-                    }
-                }
-
-                # Validate and return the intervention plan
-                return InterventionPlan(**intervention_plan)
-                
-            except json.JSONDecodeError as e:
-                logger.error(f"JSON decode error: {str(e)}")
-                raise ValueError(f"Could not parse JSON from response: {str(e)}")
-            except Exception as e:
-                logger.error(f"Error converting response to InterventionPlan: {str(e)}")
-                raise ValueError(f"Failed to convert response to InterventionPlan: {str(e)}")
+            # Parse the response as JSON
+            response_json = json.loads(response.text)
             
+            # Safety validation
+            is_safe, violation = self.safety_validator.validate_content(response_json)
+            
+            if not is_safe:
+                error_msg = violation.message if violation else "Content safety validation failed"
+                raise ValueError(f"Safety violation: {error_msg}")
+            
+            # Convert the response to match InterventionPlan schema
+            intervention_plan = {
+                "analysis": f"Analysis for class {response_json['classId']} with {response_json['numberOfStudents']} students focusing on {response_json['deficientArea']}.",
+                "strategies": [
+                    {
+                        "activity": strategy.get("title", ""),
+                        "implementation": strategy.get("implementationPlan", []),
+                        "expected_outcomes": strategy.get("successMetrics", []),
+                        "time_allocation": "30 minutes per session",  # Default value
+                        "resources": ["Emotion cards", "Activity materials"]  # Default values
+                    }
+                    for strategy in response_json["strategies"]
+                ],
+                "timeline": {
+                    f"week{week['week']}": week.get("activities", [])
+                    for week in response_json["timeline"]
+                },
+                "success_metrics": {
+                    "quantitative": [m for m in response_json["overallSuccessMetrics"] if "%" in m],
+                    "qualitative": [m for m in response_json["overallSuccessMetrics"] if "%" not in m],
+                    "assessment_methods": ["Weekly assessments", "Observation records", "Student feedback"]
+                }
+            }
+
+            logger.info("Validated intervention response generated", extra={
+                "request_id": request_id,
+                "class_id": request.metadata.class_id
+            })
+
+            # Validate and return the intervention plan
+            return InterventionPlan(**intervention_plan)
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"JSON decode error: {str(e)}")
+            raise ValueError(f"Could not parse JSON from response: {str(e)}")
         except Exception as e:
-            logger.error(f"Error generating intervention plan: {str(e)}")
-            raise ValueError(f"Failed to generate intervention plan: {str(e)}")
+            logger.error(f"Error generating validated intervention: {str(e)}")
+            raise ValueError(f"Failed to generate intervention: {str(e)}")
 
     def health_check(self) -> bool:
         try:

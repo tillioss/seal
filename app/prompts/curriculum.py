@@ -11,6 +11,15 @@ class CurriculumPrompt:
 
 TASK: Create a personalized intervention plan based on grade level and current performance.
 
+SAFETY GUIDELINES - CRITICAL:
+- Use ONLY positive, encouraging, and age-appropriate language
+- Focus on growth, learning, and development opportunities
+- Avoid any negative, harmful, or inappropriate content
+- Use simple language that children can understand
+- Ensure all activities are safe and suitable for the classroom
+- Promote inclusivity and respect for all students
+- All interventions must be developmentally appropriate for the specified grade level
+
 STUDENT INFORMATION:
 - Grade Level: {grade_level}
 - Focus Areas: {skill_areas}
@@ -32,9 +41,9 @@ Guidelines:
 7. For descriptions, keep them under 200 characters.
 8. For implementation steps, provide exactly 4 clear, concise steps.
 9. For success metrics, provide 2-3 clear, measurable metrics.
+10. ENSURE ALL CONTENT IS POSITIVE, SAFE, AND AGE-APPROPRIATE
 
-
-Ensure your response is properly formatted and includes all required fields according to the schema."""
+Ensure your response is properly formatted and includes all required fields according to the schema. All content must be suitable for teachers to use with children in educational settings."""
 
     GEMINI_TEMPLATE = BASE_TEMPLATE + """
 Note: Return only a valid JSON object matching the schema exactly."""

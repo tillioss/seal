@@ -7,7 +7,6 @@ from app.schemas import InterventionPlan
 class InterventionPrompt:
     """Manages prompt templates for intervention generation."""
     
-    # EMT-specific intervention strategies from original assessment tool
     EMT_STRATEGIES = {
         "EMT1": {
             "focus": "Visual Emotion Recognition",
@@ -216,44 +215,14 @@ EMT Score Averages:
 - EMT3 (Expression Labeling): {emt3_avg:.2f}%
 - EMT4 (Label-to-Expression): {emt4_avg:.2f}%
 
-EMT-SPECIFIC INTERVENTION STRATEGIES:
+TARGETED INTERVENTION STRATEGIES FOR {deficient_area}:
 
-EMT1 - Visual Emotion Recognition (Visual-to-visual matching):
-Focus: Visual Emotion Recognition
-Proven Strategies:
-- Emotion flashcard pairs for matching practice
-- Mirror expression practice with emotion cards
-- Digital emotion matching games with progressive difficulty
-- Pattern recognition activities with facial expressions
-
-EMT2 - Situation-to-Expression Connection (Verbal context to visual expression):
-Focus: Contextual Understanding
-Proven Strategies:
-- Story-based emotion discussions with character analysis
-- Scenario cards with emotional contexts for matching
-- Role-playing emotional situations with expression practice
-- Situational emotion analysis activities
-
-EMT3 - Expression Labeling (Visual to verbal labeling):
-Focus: Emotion Vocabulary Building
-Proven Strategies:
-- Emotion word wall development and daily practice
-- Expression-label matching games and activities
-- Emotion vocabulary journals with daily entries
-- Vocabulary building through visual-verbal connections
-
-EMT4 - Label-to-Expression Matching (Verbal label to visual expression):
-Focus: Emotion Label Comprehension
-Proven Strategies:
-- Emotion word-to-face games and quick responses
-- Verbal emotion cues practice with audio support
-- Group emotion word activities and competitions
-- Label comprehension through interactive exercises
+{focused_strategies}
 
 INSTRUCTIONS:
-1. Focus primarily on the deficient area ({deficient_area}) using the proven strategies above
-2. Select 3-5 specific activities from the relevant EMT strategy set
-3. Adapt activities to be age-appropriate and engaging
+1. Focus primarily on the deficient area ({deficient_area}) using the strategies provided above
+2. Select 3-5 specific activities from the available strategy set
+3. Adapt activities to be age-appropriate and engaging for the class
 4. Include supporting activities from other EMT areas to maintain overall development
 5. Create a 4-week progressive implementation timeline
 6. Provide measurable success metrics specific to the deficient area
@@ -269,7 +238,7 @@ IMPORTANT REQUIREMENTS:
 2. Ensure the JSON structure matches the schema exactly
 3. Include at least 3 strategies (maximum 5)
 4. Make all strategies specific to the deficient area ({deficient_area})
-5. Use the proven EMT-specific strategies provided above
+5. Use the specific strategies provided above for {deficient_area}
 6. Include a 4-week timeline with progressive activities
 7. Provide measurable success metrics
 8. Double-check that your response is valid JSON
@@ -303,6 +272,14 @@ Note: Format your response as a JSON object without any additional text or expla
         data['schema'] = json.dumps(InterventionPlan.model_json_schema(), indent=2)
         data['example'] = json.dumps(cls.EXAMPLE_RESPONSE, indent=2)
         
+        # Generate EMT-specific strategy descriptions from EMT_STRATEGIES
+        deficient_area = data.get('deficient_area', 'EMT1')
+        if deficient_area in cls.EMT_STRATEGIES:
+            strategy_info = cls.EMT_STRATEGIES[deficient_area]
+            data['focused_strategies'] = cls._format_strategies_for_prompt(strategy_info)
+        else:
+            data['focused_strategies'] = "No specific strategies available for this area."
+        
         # Select template based on provider
         template = {
             'gemini': cls.GEMINI_TEMPLATE,
@@ -310,3 +287,19 @@ Note: Format your response as a JSON object without any additional text or expla
         }.get(provider, cls.BASE_TEMPLATE)
 
         return template.format(**data)
+    
+    @classmethod
+    def _format_strategies_for_prompt(cls, strategy_info: Dict[str, Any]) -> str:
+        """Format strategy information for inclusion in prompt."""
+        formatted = f"Focus: {strategy_info['focus']}\n"
+        formatted += f"Description: {strategy_info['description']}\n\n"
+        formatted += "Available Strategies:\n"
+        
+        for i, strategy in enumerate(strategy_info['strategies'], 1):
+            formatted += f"{i}. {strategy['activity']}\n"
+            formatted += "   Implementation:\n"
+            for step in strategy['implementation']:
+                formatted += f"   - {step}\n"
+            formatted += f"   Resources: {', '.join(strategy['resources'])}\n\n"
+        
+        return formatted

@@ -1,0 +1,57 @@
+# Testing framework
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+pytest-xdist>=3.3.0
+
+# Coverage reporting
+coverage>=7.2.0
+coverage-badge>=1.1.0
+
+# HTTP testing
+httpx>=0.24.0
+requests>=2.31.0
+
+# Mocking and fixtures
+responses>=0.23.0
+factory-boy>=3.3.0
+
+# Performance testing
+pytest-benchmark>=4.0.0
+
+# Test utilities
+freezegun>=1.2.0
+faker>=19.0.0
+
+# Code quality
+flake8>=6.0.0
+black>=23.0.0
+isort>=5.12.0
+
+# Type checking
+mypy>=1.5.0
+
+# Documentation testing
+pytest-doctestplus>=1.0.0
+
+# Parallel execution
+pytest-parallel>=0.1.0
+
+# HTML reporting
+pytest-html>=3.2.0
+
+# JSON reporting
+pytest-json-report>=1.5.0
+
+# Environment management
+python-dotenv>=1.0.0
+
+# Async testing utilities
+aioresponses>=0.7.0
+
+# Time-based testing
+time-machine>=2.10.0
+
+fastapi[all]>=0.100.0
+google-generativeai>=0.3.0 

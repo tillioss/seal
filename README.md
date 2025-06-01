@@ -1,49 +1,79 @@
 # SEAL (Social Emotional Adaptive Learning)
 
-An AI-powered system that analyzes student performance data and generates targeted intervention plans using advanced language models.
+An AI-powered system that analyzes student performance data and generates targeted intervention plans using advanced language models with detailed EMT-specific scenarios.
 
 ## Overview
 
-SEAL is a REST API service that helps educators create personalized intervention strategies for students based on their emotional intelligence metrics. It uses Google's Gemini AI to generate contextually relevant and age-appropriate interventions through two specialized endpoints:
+SEAL is a REST API service that helps educators create personalized intervention strategies for students based on their emotional intelligence metrics. It uses Google's Gemini AI to generate contextually relevant and age-appropriate interventions through two specialized assessment tools:
 
-1. **EMT Score-based Interventions** - Analyzes class performance data to generate targeted intervention plans
-2. **Curriculum-based Interventions** - Provides grade-appropriate emotional learning activities based on skill areas and performance scores
+1. **EMT Assessment Tool (Q1)** - Analyzes class performance data across four EMT areas with detailed scenario-based interventions
+2. **Curriculum Assessment Tool (Q2)** - Provides grade-appropriate emotional learning activities based on skill areas and performance scores
 
 ## Features
 
-- **EMT Score Analysis**: Process and analyze Emotional Measurement Task (EMT) scores across four key areas:
-  - EMT1: Visual Emotion Matching
-  - EMT2: Emotion Description
-  - EMT3: Expression Labeling
-  - EMT4: Label Matching
+### EMT Assessment Tool - Detailed Scenario-Based Interventions
 
-- **Curriculum Interventions**: Grade-specific emotional learning activities for:
-  - Emotional Awareness
-  - Emotional Regulation
-  - Anger Management
-  - Supports grades 1, 2, and 5
+Process and analyze Emotional Measurement Task (EMT) scores across four key areas with specific intervention strategies:
 
-- **Intervention Generation**: Creates detailed intervention plans including:
-  - Performance analysis
-  - Targeted strategies
-  - Implementation timelines
-  - Success metrics
-  - Resource requirements
+- **EMT1: Visual Emotion Matching** (Visual-to-visual matching)
+  - Emotion flashcard pairs for matching practice
+  - Mirror expression practice with emotion cards
+  - Digital emotion matching games with progressive difficulty
+  - Pattern recognition activities with facial expressions
 
-- **🛡️ Safety System**: Comprehensive content validation to ensure all AI-generated content is appropriate for children:
-  - Multi-layer safety validation with severity classification
-  - Child-focused protection against harmful or inappropriate content
-  - Configurable safety levels for different environments
-  - Real-time content filtering and violation logging
-  - See [SAFETY.md](SAFETY.md) for detailed documentation
+- **EMT2: Situation-to-Expression Connection** (Verbal context to visual expression)
+  - Story-based emotion discussions with character analysis
+  - Scenario cards with emotional contexts for matching
+  - Role-playing emotional situations with expression practice
+  - Situational emotion analysis activities
 
-- **API Features**:
-  - JSON schema validation
-  - Automatic retries with exponential backoff
-  - Health check endpoint
-  - Structured logging
-  - CORS support
-  - Data privacy compliance (aggregated scores only sent to AI)
+- **EMT3: Expression Labeling** (Visual to verbal labeling)
+  - Emotion word wall development and daily practice
+  - Expression-label matching games and activities
+  - Emotion vocabulary journals with daily entries
+  - Vocabulary building through visual-verbal connections
+
+- **EMT4: Label-to-Expression Matching** (Verbal label to visual expression)
+  - Emotion word-to-face games and quick responses
+  - Verbal emotion cues practice with audio support
+  - Group emotion word activities and competitions
+  - Label comprehension through interactive exercises
+
+### Curriculum Assessment Tool
+
+Grade-specific emotional learning activities for:
+- **Emotional Awareness**: Understanding and identifying emotions
+- **Emotional Regulation**: Managing and controlling emotional responses  
+- **Anger Management**: Specific strategies for anger control and expression
+- Supports grades 1, 2, and 5
+
+### Intervention Generation
+
+Creates detailed intervention plans including:
+- Performance analysis with EMT-specific focus areas
+- Targeted strategies based on proven EMT methodologies
+- 4-week progressive implementation timelines
+- Measurable success metrics
+- Specific resource requirements
+- Age-appropriate and classroom-ready activities
+
+### 🛡️ Safety System
+
+Comprehensive content validation to ensure all AI-generated content is appropriate for children:
+- Multi-layer safety validation with severity classification
+- Child-focused protection against harmful or inappropriate content
+- Configurable safety levels for different environments
+- Real-time content filtering and violation logging
+- See [SAFETY.md](SAFETY.md) for detailed documentation
+
+### API Features
+
+- JSON schema validation
+- Automatic retries with exponential backoff
+- Health check endpoint
+- Structured logging
+- CORS support
+- Data privacy compliance (aggregated scores only sent to AI)
 
 ## Quick Start
 
@@ -98,13 +128,13 @@ SEAL is a REST API service that helps educators create personalized intervention
 
 ## API Endpoints
 
-### 1. Generate EMT-based Intervention Plan
+### 1. EMT Assessment Tool - Generate Intervention Plan
 
 ```bash
 POST /score
 ```
 
-Analyzes class EMT performance data and generates targeted intervention strategies.
+Analyzes class EMT performance data and generates targeted intervention strategies using detailed EMT-specific scenarios.
 
 Example request:
 
@@ -124,7 +154,9 @@ Example request:
 }
 ```
 
-### 2. Generate Curriculum-based Intervention Plan
+The API will automatically select appropriate intervention strategies from the EMT2 scenario set (Situation-to-Expression Connection) including story-based discussions, scenario cards, and role-playing activities.
+
+### 2. Curriculum Assessment Tool - Generate Learning Plan
 
 ```bash
 POST /curriculum
@@ -148,7 +180,7 @@ Example request:
 GET /health
 ```
 
-Returns the health status of both intervention and curriculum services.
+Returns the health status of both assessment tools and services.
 
 ## Project Structure
 
@@ -156,25 +188,56 @@ Returns the health status of both intervention and curriculum services.
 seal/
 ├── app/
 │   ├── llm/
-│   │   ├── gateway.py              # Base LLM gateway and EMT intervention implementation
-│   │   ├── curriculum_gateway.py   # Curriculum-specific intervention implementation
+│   │   ├── gateway.py              # EMT assessment tool with detailed scenarios
+│   │   ├── curriculum_gateway.py   # Curriculum assessment tool implementation
 │   │   └── __init__.py
 │   ├── prompts/
-│   │   ├── intervention.py         # EMT intervention prompt templates
-│   │   ├── curriculum.py           # Curriculum intervention prompt templates
+│   │   ├── intervention.py         # EMT scenarios and intervention strategies
+│   │   ├── curriculum.py           # Curriculum intervention templates
 │   │   └── __init__.py
 │   ├── schemas/
 │   │   ├── base.py                 # EMT score and intervention schemas
 │   │   ├── curriculum.py           # Curriculum-specific schemas
 │   │   └── __init__.py
-│   ├── main.py                     # FastAPI application with all endpoints
+│   ├── safety/
+│   │   ├── guardrails.py           # Content safety validation
+│   │   └── __init__.py
+│   ├── main.py                     # FastAPI application with both assessment tools
 │   └── __init__.py
+├── data/
+│   └── synthetic_data.py           # EMT test data generation
+├── test/
+│   ├── compare_llms.py             # Model comparison testing
+│   └── results/                    # Test results storage
 ├── requirements.txt
 ├── Dockerfile
 ├── docker-compose.yml
 ├── example.env                     # Environment configuration template
+├── SAFETY.md                       # Safety system documentation
+├── DEPLOYMENT.md                   # Deployment instructions
 └── README.md
 ```
+
+## Assessment Tool Details
+
+### EMT Assessment Tool (Q1 Implementation)
+
+The EMT Assessment Tool processes emotional measurement task scores and generates intervention plans using detailed, scenario-based strategies. Each EMT area has specific proven interventions:
+
+- **Comprehensive scenario library** with 3+ detailed strategies per EMT area
+- **Progressive difficulty levels** from basic to complex emotions
+- **Multi-modal approaches** including visual, verbal, and interactive components
+- **Classroom-ready activities** with specific resource requirements
+- **Measurable outcomes** with quantitative and qualitative metrics
+
+### Curriculum Assessment Tool (Q2 Implementation)
+
+The Curriculum Assessment Tool provides grade-specific interventions across three skill areas:
+
+- **10 predefined interventions** covering emotional awareness, regulation, and anger management
+- **Grade-appropriate activities** for grades 1, 2, and 5
+- **Structured implementation plans** with clear steps and timelines
+- **Developmental considerations** matching cognitive and emotional capabilities
 
 ## Data Privacy
 
@@ -201,40 +264,22 @@ SEAL is designed with data privacy in mind:
 
 ## Testing
 
-Run the test suite:
+Run the model comparison tests to evaluate different LLM performance:
 
 ```bash
-pytest
+python test/compare_llms.py
 ```
 
-## Requirements
-
-- Python 3.8+
-- All dependencies listed in `requirements.txt`
-- Google API key for Gemini AI
-- Minimum 4GB RAM recommended
-- Internet connection for API access
-
-## Supported Grade Levels & Skill Areas
-
-### Grade Levels
-- Grade 1
-- Grade 2  
-- Grade 5
-
-### Skill Areas
-- **Emotional Awareness**: Understanding and identifying emotions
-- **Emotional Regulation**: Managing and controlling emotional responses
-- **Anger Management**: Specific strategies for anger control and expression
+Results are saved in `test/results/` with detailed performance metrics and response quality analysis.
 
 ## Future Improvements
 
 1. Add support for additional grade levels
-2. Expand skill areas and intervention types
-3. Implement real-time data input capabilities
-4. Add a user interface for easier interaction
-5. Develop assessment tracking features
-6. Add multi-language support
+2. Expand EMT scenario library with more detailed interventions
+3. Implement real-time assessment data input capabilities
+4. Add a user interface for easier interaction with both assessment tools
+5. Develop progress tracking and outcome measurement features
+6. Add multi-language support for diverse classrooms
 
 ## License
 

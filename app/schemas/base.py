@@ -2,10 +2,10 @@ from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, validator
 
 class EMTScores(BaseModel):
-    EMT1: List[float] = Field(..., description="Visual Emotion Matching scores")
-    EMT2: List[float] = Field(..., description="Emotion Description scores")
-    EMT3: List[float] = Field(..., description="Expression Labeling scores")
-    EMT4: List[float] = Field(..., description="Label Matching scores")
+    EMT1: List[float] = Field(..., description="Visual Emotion Matching scores", example=[65.0, 70.0, 68.0, 72.0, 69.0])
+    EMT2: List[float] = Field(..., description="Emotion Description scores", example=[58.0, 62.0, 60.0, 64.0, 61.0])
+    EMT3: List[float] = Field(..., description="Expression Labeling scores", example=[72.0, 75.0, 70.0, 78.0, 74.0])
+    EMT4: List[float] = Field(..., description="Label Matching scores", example=[63.0, 65.0, 64.0, 67.0, 66.0])
 
     @validator("*")
     def validate_scores(cls, v):
@@ -14,9 +14,9 @@ class EMTScores(BaseModel):
         return v
 
 class ClassMetadata(BaseModel):
-    class_id: str = Field(..., description="Unique identifier for the class")
-    deficient_area: str = Field(..., description="Primary area needing intervention")
-    num_students: int = Field(..., description="Number of students in the class")
+    class_id: str = Field(..., description="Unique identifier for the class", example="CLASS_5A_2024")
+    deficient_area: str = Field(..., description="Primary area needing intervention", example="EMT2")
+    num_students: int = Field(..., description="Number of students in the class", example=25)
 
     @validator("deficient_area")
     def validate_deficient_area(cls, v):
@@ -28,6 +28,23 @@ class ClassMetadata(BaseModel):
 class InterventionRequest(BaseModel):
     scores: EMTScores
     metadata: ClassMetadata
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "scores": {
+                    "EMT1": [65.0, 70.0, 68.0, 72.0, 69.0],
+                    "EMT2": [58.0, 62.0, 60.0, 64.0, 61.0],
+                    "EMT3": [72.0, 75.0, 70.0, 78.0, 74.0],
+                    "EMT4": [63.0, 65.0, 64.0, 67.0, 66.0]
+                },
+                "metadata": {
+                    "class_id": "CLASS_5A_2024",
+                    "deficient_area": "EMT2",
+                    "num_students": 25
+                }
+            }
+        }
 
 class InterventionStrategy(BaseModel):
     activity: str = Field(..., description="Name of the EMT activity")

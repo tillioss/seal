@@ -15,33 +15,31 @@ current_dir = Path(__file__).parent
 project_root = current_dir.parent
 sys.path.append(str(project_root))
 
-from data.templates.intervention_templates import TEMPLATES
-
 # Set environment variable for tokenizer
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-def create_enhanced_prompt(test_case: str, templates: list) -> str:
-    """Create a prompt that includes context from templates"""
-    template_context = "\nReference Activities from EMT Templates:\n"
-    for template in templates:
-        template_context += f"\n{template['type'].upper()}:\n"
-        template_context += f"{template['content'].strip()}\n"
-    
+def create_emt_test_prompt(test_case: str) -> str:
+    """Create a test prompt for EMT intervention generation"""
     prompt = f"""
-Based on the following case and EMT activity templates, create a detailed intervention plan:
+Based on the following EMT assessment case, create a detailed intervention plan:
 
 CASE:
 {test_case}
 
-{template_context}
+EMT Assessment Areas:
+- EMT1: Visual Emotion Matching (visual-to-visual matching)
+- EMT2: Situation-to-Expression (verbal context to visual expression)  
+- EMT3: Expression Labeling (visual to verbal labeling)
+- EMT4: Label-to-Expression (verbal label to visual expression)
 
-Please provide 5 specific, actionable intervention strategies that incorporate relevant EMT activities.
+Please provide 3-5 specific, actionable intervention strategies that address the deficient areas.
 For each strategy, include:
-1. Which EMT activities are being utilized
-2. How to implement the strategy
+1. Which EMT area is being targeted
+2. Specific implementation steps
 3. Expected outcomes
+4. Required resources
 
-Format your response as a clear, numbered list.
+Format your response as a clear, structured plan.
 """
     return prompt
 
@@ -150,9 +148,9 @@ def main():
                 Given a class of 25 students showing difficulties in emotional recognition and expression:
                 - Average EMT scores:
                     * EMT1 (Visual Emotion Matching): 65%
-                    * EMT2 (Emotion Description): 58%
+                    * EMT2 (Situation-to-Expression): 58%
                     * EMT3 (Expression Labeling): 62%
-                    * EMT4 (Label Matching): 60%
+                    * EMT4 (Label-to-Expression): 60%
                 - Main challenges: 
                     * Difficulty recognizing subtle emotional expressions
                     * Limited emotional vocabulary
@@ -160,8 +158,8 @@ def main():
                 - Age group: 8-10 years
                """
     
-    # Create enhanced prompt with templates
-    full_prompt = create_enhanced_prompt(test_case, TEMPLATES)
+    # Create test prompt
+    full_prompt = create_emt_test_prompt(test_case)
     
     models = [ # This one worked before
         "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
@@ -200,6 +198,8 @@ def main():
         
         # Save all results
         save_results(results)
+    else:
+        print("No successful results to save.")
 
 if __name__ == "__main__":
     main()

@@ -109,8 +109,26 @@ class GeminiGateway(LLMGateway):
             if not response.text:
                 raise ValueError("Empty response from LLM")
             
+            # Debug: Log the raw response
+            logger.info(f"Raw LLM response: {response.text[:200]}...")
+            
             # Parse the response as JSON
-            response_json = json.loads(response.text)
+            try:
+                response_json = json.loads(response.text)
+            except json.JSONDecodeError as e:
+                # Try to extract JSON from the response if it's wrapped in other text
+                logger.error(f"Initial JSON parse failed: {str(e)}")
+                logger.error(f"Raw response: {response.text}")
+                
+                # Try to find JSON in the response
+                start = response.text.find('{')
+                end = response.text.rfind('}') + 1
+                if start >= 0 and end > start:
+                    json_str = response.text[start:end]
+                    logger.info(f"Extracted JSON: {json_str[:200]}...")
+                    response_json = json.loads(json_str)
+                else:
+                    raise ValueError(f"Could not find valid JSON in response: {response.text}")
             
             # Safety validation
             is_safe, violation = self.safety_validator.validate_content(response_json)

@@ -1,0 +1,170 @@
+{
+  "emt_cases": [
+    {
+      "name": "EMT1_Low_Visual_Recognition",
+      "description": "Class struggling with visual emotion matching",
+      "input": {
+        "scores": {
+          "EMT1": [
+            35.0,
+            40.0,
+            38.0,
+            42.0,
+            39.0
+          ],
+          "EMT2": [
+            75.0,
+            78.0,
+            80.0,
+            77.0,
+            79.0
+          ],
+          "EMT3": [
+            70.0,
+            72.0,
+            68.0,
+            71.0,
+            69.0
+          ],
+          "EMT4": [
+            65.0,
+            67.0,
+            70.0,
+            68.0,
+            66.0
+          ]
+        },
+        "metadata": {
+          "class_id": "QUICK_TEST_1A",
+          "deficient_area": "EMT1",
+          "num_students": 25
+        }
+      },
+      "expected_focus": "Visual Emotion Recognition, Emotion Flashcard Pairs"
+    },
+    {
+      "name": "EMT2_Low_Situation_Expression",
+      "description": "Class struggling with connecting situations to expressions",
+      "input": {
+        "scores": {
+          "EMT1": [
+            80.0,
+            82.0,
+            85.0,
+            83.0,
+            81.0
+          ],
+          "EMT2": [
+            25.0,
+            30.0,
+            28.0,
+            32.0,
+            29.0
+          ],
+          "EMT3": [
+            75.0,
+            78.0,
+            80.0,
+            77.0,
+            79.0
+          ],
+          "EMT4": [
+            70.0,
+            72.0,
+            68.0,
+            71.0,
+            69.0
+          ]
+        },
+        "metadata": {
+          "class_id": "QUICK_TEST_2B",
+          "deficient_area": "EMT2",
+          "num_students": 20
+        }
+      },
+      "expected_focus": "Situation-to-Expression, Story-Based Discussions"
+    },
+    {
+      "name": "EMT3_Low_Vocabulary",
+      "description": "Class struggling with emotion vocabulary",
+      "input": {
+        "scores": {
+          "EMT1": [
+            75.0,
+            78.0,
+            80.0,
+            77.0,
+            79.0
+          ],
+          "EMT2": [
+            70.0,
+            72.0,
+            68.0,
+            71.0,
+            69.0
+          ],
+          "EMT3": [
+            20.0,
+            25.0,
+            22.0,
+            28.0,
+            24.0
+          ],
+          "EMT4": [
+            65.0,
+            67.0,
+            70.0,
+            68.0,
+            66.0
+          ]
+        },
+        "metadata": {
+          "class_id": "QUICK_TEST_3C",
+          "deficient_area": "EMT3",
+          "num_students": 30
+        }
+      },
+      "expected_focus": "Emotion Vocabulary, Word Wall"
+    }
+  ],
+  "curriculum_cases": [
+    {
+      "name": "Grade1_Emotional_Awareness_Low",
+      "description": "Grade 1 student struggling with emotional awareness",
+      "input": {
+        "grade_level": "1",
+        "skill_areas": [
+          "emotional_awareness"
+        ],
+        "score": 25.0
+      },
+      "expected_focus": "Color Me, Emotional Awareness"
+    },
+    {
+      "name": "Grade2_Mixed_Skills_Moderate",
+      "description": "Grade 2 student with moderate skills in multiple areas",
+      "input": {
+        "grade_level": "2",
+        "skill_areas": [
+          "emotional_awareness",
+          "emotional_regulation"
+        ],
+        "score": 65.0
+      },
+      "expected_focus": "Feelings Chart, Mindfulness, Growth Mindset"
+    },
+    {
+      "name": "Grade5_Anger_Management_High",
+      "description": "Grade 5 student with high skills needing advanced anger management",
+      "input": {
+        "grade_level": "5",
+        "skill_areas": [
+          "anger_management",
+          "emotional_regulation"
+        ],
+        "score": 85.0
+      },
+      "expected_focus": "Play the Judge, Time Management, Advanced strategies"
+    }
+  ]
+}

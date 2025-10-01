@@ -1,0 +1,576 @@
+type,name,description,input,raw_response
+emt,EMT1_Low_Visual_Recognition,Class struggling with visual emotion matching,"{""scores"": {""EMT1"": [35.0, 40.0, 38.0, 42.0, 39.0], ""EMT2"": [75.0, 78.0, 80.0, 77.0, 79.0], ""EMT3"": [70.0, 72.0, 68.0, 71.0, 69.0], ""EMT4"": [65.0, 67.0, 70.0, 68.0, 66.0]}, ""metadata"": {""class_id"": ""QUICK_TEST_1A"", ""deficient_area"": ""EMT1"", ""num_students"": 25}}","```json
+{
+  ""analysis"": ""The class shows a significant opportunity for growth in the area of visual emotion matching (EMT1), with a current average score of 38.80%. The students' stronger performance in other areas, such as connecting situations to expressions (EMT2), indicates a solid foundation we can build upon to enhance their visual recognition skills in a fun and encouraging way."",
+  ""strategies"": [
+    {
+      ""activity"": ""Emotion Matching Pairs"",
+      ""implementation"": [
+        ""Begin with a fun 'memory game' style activity using flashcards of basic emotions (happy, sad, angry)."",
+        ""Students work in pairs to find the matching emotion faces."",
+        ""Gradually introduce more feeling cards like 'surprised', 'excited', and 'worried' as students become more confident."",
+        ""Celebrate successful matches with positive encouragement and team high-fives.""
+      ],
+      ""expected_outcomes"": [
+        ""Improved ability to visually distinguish between different facial expressions."",
+        ""Increased speed and accuracy in matching identical emotion visuals."",
+        ""Development of positive social skills through paired and group play.""
+      ],
+      ""time_allocation"": ""15 minutes, 3 times per week"",
+      ""resources"": [
+        ""Sets of emotion flashcard pairs (featuring diverse faces)"",
+        ""Small sand timers for a fun challenge"",
+        ""Positive reinforcement stickers or stamps""
+      ]
+    },
+    {
+      ""activity"": ""Mirror, Mirror: Feeling Faces"",
+      ""implementation"": [
+        ""During morning circle time, show a large emotion card (e.g., 'happy')."",
+        ""Encourage students to make the same 'happy' face while looking at themselves in a hand mirror."",
+        ""Ask fun, guiding questions like, 'What happens to your mouth when you're happy? Do your eyes get smiley too?'"",
+        ""Play 'Guess My Feeling' where students take turns making a face for their friends to guess.""
+      ],
+      ""expected_outcomes"": [
+        ""Enhanced understanding of how specific emotions look on their own faces and the faces of others."",
+        ""Strengthened connection between feeling an emotion and its physical expression."",
+        ""Increased confidence in non-verbally expressing emotions.""
+      ],
+      ""time_allocation"": ""10 minutes daily"",
+      ""resources"": [
+        ""Child-safe hand mirrors for each student"",
+        ""Large, clear emotion reference cards"",
+        ""A 'Feelings' poster for the classroom""
+      ]
+    },
+    {
+      ""activity"": ""Digital Emotion Explorers"",
+      ""implementation"": [
+        ""Set up a 'Feeling Station' with tablets during center time."",
+        ""Use a pre-selected, age-appropriate app that focuses on matching games with emotional faces."",
+        ""Start everyone on the beginner level, celebrating their progress as they unlock new, more challenging levels."",
+        ""Track class-wide progress on a colorful chart to build a sense of team accomplishment.""
+      ],
+      ""expected_outcomes"": [
+        ""Increased student engagement in learning through a fun, interactive digital format."",
+        ""Opportunity for independent practice and self-paced learning."",
+        ""Immediate, positive feedback from the game to reinforce correct answers.""
+      ],
+      ""time_allocation"": ""20 minutes, 2 times per week"",
+      ""resources"": [
+        ""Classroom tablets or computers"",
+        ""Pre-approved educational emotion matching apps"",
+        ""Headphones for focused play""
+      ]
+    },
+    {
+      ""activity"": ""Feeling Story Charades (Supporting Activity)"",
+      ""implementation"": [
+        ""A student chooses a feeling card and acts out the expression without using words."",
+        ""The class guesses the feeling."",
+        ""Once guessed correctly, the group talks about a simple story or situation where someone might feel that way."",
+        ""This activity reinforces the visual matching skill while connecting it to labeling (EMT3) and situations (EMT2).""
+      ],
+      ""expected_outcomes"": [
+        ""Reinforces the connection between visual expressions, emotion labels, and real-life situations."",
+        ""Encourages creative expression and empathy."",
+        ""Maintains and strengthens skills in EMT2 and EMT3 areas.""
+      ],
+      ""time_allocation"": ""15 minutes, once per week"",
+      ""resources"": [
+        ""Emotion cards with both pictures and words"",
+        ""List of simple story-starter ideas""
+      ]
+    }
+  ],
+  ""timeline"": {
+    ""week1"": [
+      ""Introduction to 'Emotion Matching Pairs' with basic emotions (happy, sad, angry)."",
+      ""Daily 'Mirror, Mirror' practice focusing on these three core feelings."",
+      ""Launch 'Digital Emotion Explorers' on the easiest settings.""
+    ],
+    ""week2"": [
+      ""Add 'surprised' and 'scared' to 'Emotion Matching Pairs' and 'Mirror, Mirror' games."",
+      ""Encourage pair-and-share guessing during 'Mirror, Mirror'."",
+      ""Students progress to the next level in 'Digital Emotion Explorers'.""
+    ],
+    ""week3"": [
+      ""Introduce more complex emotions like 'excited' and 'worried' into matching games."",
+      ""Begin 'Feeling Story Charades' to link expressions to names and situations."",
+      ""Work in small groups for 'Emotion Matching Pairs' to foster teamwork.""
+    ],
+    ""week4"": [
+      ""Review all emotions using a mix of all activities."",
+      ""Hold a 'Feeling Superstars' day, celebrating progress with fun, game-based reviews."",
+      ""Final, encouraging assessment of visual matching skills using digital tools and observation.""
+    ]
+  },
+  ""success_metrics"": {
+    ""quantitative"": [
+      ""Increase the class average score on EMT1 (Visual Emotion Matching) from 38.80% to a target of 65% or higher."",
+      ""Achieve 90% accuracy in matching basic emotions (happy, sad, angry, surprised) during 'Emotion Matching Pairs' activities by the end of the intervention."",
+      ""A 50% increase in participation during 'Guess My Feeling' activities, measured by teacher observation.""
+    ],
+    ""qualitative"": [
+      ""Observable increase in students' speed and confidence when identifying emotions in pictures and on peers' faces."",
+      ""Students begin to use emotion words to describe characters in storybooks or pictures in the classroom."",
+      ""An increase in empathetic behaviors, such as comforting a peer who looks sad.""
+    ],
+    ""assessment_methods"": [
+      ""Pre- and post-intervention assessment using an EMT1-style visual matching activity."",
+      ""Weekly teacher observation checklists to track individual and group progress during activities."",
+      ""Review of accuracy and completion data from the 'Digital Emotion Explorers' app.""
+    ]
+  }
+}
+```"
+emt,EMT2_Low_Situation_Expression,Class struggling with connecting situations to expressions,"{""scores"": {""EMT1"": [80.0, 82.0, 85.0, 83.0, 81.0], ""EMT2"": [25.0, 30.0, 28.0, 32.0, 29.0], ""EMT3"": [75.0, 78.0, 80.0, 77.0, 79.0], ""EMT4"": [70.0, 72.0, 68.0, 71.0, 69.0]}, ""metadata"": {""class_id"": ""QUICK_TEST_2B"", ""deficient_area"": ""EMT2"", ""num_students"": 20}}","```json
+{
+  ""analysis"": ""The class demonstrates a significant need for intervention in EMT2 (Situation-to-Expression), with a low average score of 28.80%. This indicates a specific difficulty in connecting situational contexts to corresponding emotional expressions. While other areas like visual matching and labeling are stronger, this core gap impacts social understanding and empathy. The intervention will focus intensively on bridging this situation-to-emotion gap."",
+  ""strategies"": [
+    {
+      ""activity"": ""Story Time Emotion Detectives"",
+      ""implementation"": [
+        ""Read a short, age-appropriate story with clear emotional events."",
+        ""Pause at a key moment in the story and ask, 'How do you think the character is feeling right now?'"",
+        ""Have students choose from a set of emotion expression cards (e.g., happy, sad, surprised) to show their answer."",
+        ""Discuss as a group why the character might feel that way, connecting the event in the story to the feeling.""
+      ],
+      ""expected_outcomes"": [
+        ""Improved ability to infer emotions from story contexts."",
+        ""Enhanced understanding of cause-and-effect related to feelings."",
+        ""Increased empathy for characters and peers.""
+      ],
+      ""time_allocation"": ""20 minutes, 2 times per week"",
+      ""resources"": [
+        ""Age-appropriate story books"",
+        ""Large, clear emotion expression cards"",
+        ""Whiteboard or chart paper for discussion notes""
+      ]
+    },
+    {
+      ""activity"": ""Scenario Circle"",
+      ""implementation"": [
+        ""Gather students in a circle."",
+        ""Present a simple, relatable scenario card, such as 'You received a surprise gift' or 'Your friend didn't want to share a toy'."",
+        ""Ask students to select the emotion card that best matches the situation."",
+        ""Encourage students to make the facial expression themselves and share why they chose that feeling.""
+      ],
+      ""expected_outcomes"": [
+        ""Stronger and faster connection between common situations and expected emotional responses."",
+        ""Increased confidence in identifying and showing emotions."",
+        ""Development of social perspective-taking skills.""
+      ],
+      ""time_allocation"": ""15 minutes, 3 times per week"",
+      ""resources"": [
+        ""Laminated scenario cards with simple illustrations"",
+        ""A class set of emotion expression photos or cards""
+      ]
+    },
+    {
+      ""activity"": ""Feelings in Action Role-Play"",
+      ""implementation"": [
+        ""In small, supportive groups, provide a simple situation prompt (e.g., 'You just won a game')."",
+        ""Ask students to act out how they would feel without using words, focusing on facial expressions and body language."",
+        ""The other students in the group guess the feeling."",
+        ""Lead a brief reflection on how our bodies and faces show what we feel inside.""
+      ],
+      ""expected_outcomes"": [
+        ""Improved ability to express emotions non-verbally in response to a situation."",
+        ""Better recognition of emotional cues in others."",
+        ""A safe environment to practice and explore different emotional expressions.""
+      ],
+      ""time_allocation"": ""25 minutes, once per week"",
+      ""resources"": [
+        ""Situation prompt cards"",
+        ""An open space in the classroom"",
+        ""Optional simple props (e.g., a ball, blocks)""
+      ]
+    },
+    {
+      ""activity"": ""Daily Emotion Check-In (Supporting Activity)"",
+      ""implementation"": [
+        ""As a morning routine, have each student point to an emotion on a 'Feelings Chart' that shows how they are feeling."",
+        ""Briefly ask one or two students to share a simple reason why (e.g., 'I feel happy because I'm excited to play outside later')."",
+        ""This reinforces labeling (EMT3) and connects a personal situation to an expression.""
+      ],
+      ""expected_outcomes"": [
+        ""Maintains and strengthens skills in expression labeling."",
+        ""Normalizes the discussion of feelings in the classroom."",
+        ""Provides a daily, low-stakes practice of connecting feelings to personal situations.""
+      ],
+      ""time_allocation"": ""5 minutes daily"",
+      ""resources"": [
+        ""A large 'Feelings Chart' with clear emotion faces and labels""
+      ]
+    }
+  ],
+  ""timeline"": {
+    ""week1"": [
+      ""Introduce the 'Feelings Chart' for the Daily Emotion Check-In."",
+      ""Begin 'Story Time Emotion Detectives' with stories focused on basic emotions: happy and sad."",
+      ""Use 'Scenario Circle' with very clear, positive situations (e.g., getting a hug).""
+    ],
+    ""week2"": [
+      ""Continue Daily Emotion Check-In."",
+      ""In 'Story Time Emotion Detectives', introduce stories with more complex emotions like surprised and angry."",
+      ""Use 'Scenario Circle' to include situations that might lead to sad or angry feelings."",
+      ""Introduce 'Feelings in Action Role-Play' with teacher-led, whole-group examples.""
+    ],
+    ""week3"": [
+      ""Daily Emotion Check-In, encouraging more students to share reasons."",
+      ""Deepen 'Story Time Emotion Detectives' by discussing how a character's feelings might change."",
+      ""Transition 'Feelings in Action Role-Play' into small group practice with familiar scenarios."",
+      ""In 'Scenario Circle', ask students to suggest their own situations.""
+    ],
+    ""week4"": [
+      ""Continue all activities, focusing on student independence."",
+      ""Combine activities: Use a situation from 'Story Time' as a prompt for 'Feelings in Action Role-Play'."",
+      ""Review all practiced emotions and situations through fun games."",
+      ""Conduct post-intervention assessment and observation.""
+    ]
+  },
+  ""success_metrics"": {
+    ""quantitative"": [
+      ""Increase the class average score on EMT2 (Situation-to-Expression) from 28.80% to at least 65%."",
+      ""Students correctly match an emotion to a given scenario in classroom activities with 80% accuracy.""
+    ],
+    ""qualitative"": [
+      ""Teacher observation notes a marked increase in students' ability to predict and explain characters' feelings during story time."",
+      ""Students begin to spontaneously use appropriate non-verbal expressions during peer interactions and play."",
+      ""Increased confidence and participation during emotion-focused group discussions.""
+    ],
+    ""assessment_methods"": [
+      ""Pre- and post-intervention administration of the EMT2 assessment."",
+      ""Weekly teacher checklists to track individual student progress during 'Scenario Circle' and role-play activities."",
+      ""Anecdotal records of student comments and discussions during 'Story Time Emotion Detectives'.""
+    ]
+  }
+}
+```"
+emt,EMT3_Low_Vocabulary,Class struggling with emotion vocabulary,"{""scores"": {""EMT1"": [75.0, 78.0, 80.0, 77.0, 79.0], ""EMT2"": [70.0, 72.0, 68.0, 71.0, 69.0], ""EMT3"": [20.0, 25.0, 22.0, 28.0, 24.0], ""EMT4"": [65.0, 67.0, 70.0, 68.0, 66.0]}, ""metadata"": {""class_id"": ""QUICK_TEST_3C"", ""deficient_area"": ""EMT3"", ""num_students"": 30}}","```json
+{
+  ""analysis"": ""The class demonstrates a specific and significant challenge in EMT3 (Expression Labeling), with a current average score of 23.80%. This indicates a difficulty in connecting the correct vocabulary word to a visual representation of an emotion. While performance in other areas like visual matching and recognizing situations is stronger, this core vocabulary gap is a key opportunity for growth. The intervention will focus on building a rich emotion vocabulary and practicing the direct link between feeling words and facial expressions."",
+  ""strategies"": [
+    {
+      ""activity"": ""Our Feelings Word Wall"",
+      ""implementation"": [
+        ""Create a large, colorful, and interactive display in the classroom labeled 'Our Feelings Word Wall'."",
+        ""Introduce 3-4 new 'feeling words' each week with pictures showing the expression."",
+        ""Practice saying the words together and making the matching facial expressions in a mirror."",
+        ""Use daily sentence starters like 'Today, I see someone who looks...' and have students point to a word on the wall.""
+      ],
+      ""expected_outcomes"": [
+        ""Students will learn and recognize a wider range of emotion words."",
+        ""Students will improve their ability to connect a vocabulary word to a facial expression."",
+        ""The classroom will have a constant visual reminder of emotion vocabulary.""
+      ],
+      ""time_allocation"": ""15 minutes daily (morning meeting)"",
+      ""resources"": [
+        ""Large poster board or bulletin board space"",
+        ""Laminated emotion vocabulary cards with pictures"",
+        ""Sentence strips"",
+        ""Classroom mirrors (handheld or wall-mounted)""
+      ]
+    },
+    {
+      ""activity"": ""Feelings Match-Up Fun"",
+      ""implementation"": [
+        ""Create sets of cards: one set with pictures of facial expressions, and a matching set with the corresponding emotion words."",
+        ""Play 'Memory Match' in small groups where students turn over cards to find the picture and word pair."",
+        ""Use the cards for a 'Go Fish' style game, where students ask, 'Do you have someone who feels happy?'."",
+        ""As a whole class, show a picture card and have students write the matching feeling word on a small whiteboard.""
+      ],
+      ""expected_outcomes"": [
+        ""Students will strengthen the direct connection between an expression and its label."",
+        ""Students will improve their recall of emotion vocabulary."",
+        ""Learning will be reinforced through fun, cooperative play.""
+      ],
+      ""time_allocation"": ""20 minutes, twice a week (center time or game time)"",
+      ""resources"": [
+        ""Sets of laminated expression photo cards"",
+        ""Sets of laminated emotion word cards"",
+        ""Small whiteboards and markers for each student""
+      ]
+    },
+    {
+      ""activity"": ""My Feelings Diary"",
+      ""implementation"": [
+        ""Provide each student with a small notebook to be their 'Feelings Diary'."",
+        ""At the end of the day or during quiet time, students choose a feeling word from the word wall that describes their day."",
+        ""Students will write the feeling word and draw a picture of themselves showing that feeling."",
+        ""Offer opportunities for voluntary sharing in pairs or small groups, encouraging students to say 'I felt ____ when ____.'""
+      ],
+      ""expected_outcomes"": [
+        ""Students will practice personalizing emotion vocabulary."",
+        ""Students will develop a habit of self-reflection and emotional expression."",
+        ""Students will improve their ability to use feeling words in context.""
+      ],
+      ""time_allocation"": ""10 minutes daily (quiet time or end-of-day wrap-up)"",
+      ""resources"": [
+        ""Individual notebooks or journals for each student"",
+        ""Drawing materials (crayons, colored pencils)"",
+        ""A personal reference sheet of emotion words/faces for each student's journal""
+      ]
+    }
+  ],
+  ""timeline"": {
+    ""week1"": [
+      ""Introduce the intervention plan and its purpose: 'We are all going to become feelings experts!'"",
+      ""Set up the 'Our Feelings Word Wall' with foundational emotions: Happy, Sad, Angry, Surprised."",
+      ""Begin 'My Feelings Diary' practice, focusing on drawing the four foundational feelings."",
+      ""Play the first round of 'Feelings Match-Up Fun' as a whole class demonstration.""
+    ],
+    ""week2"": [
+      ""Add new words to the wall: Excited, Scared, Curious, Proud."",
+      ""Practice making faces and using the new words in sentences during morning meeting."",
+      ""Play 'Feelings Match-Up Fun' in small, guided groups."",
+      ""Encourage students to use the new words in their 'Feelings Diary' entries.""
+    ],
+    ""week3"": [
+      ""Add nuanced words to the wall: Confused, Shy, Grateful, Frustrated."",
+      ""Introduce 'Feelings Charades' where students act out an emotion from the word wall for others to guess and label."",
+      ""Students share a favorite 'Feelings Diary' entry with a partner."",
+      ""Play 'Feelings Match-Up Fun' independently in centers.""
+    ],
+    ""week4"": [
+      ""Review all the words on the 'Our Feelings Word Wall'."",
+      ""Play a whole-class review game using whiteboards to label expressions shown by the teacher."",
+      ""Celebrate progress by having students create a 'Feelings Collage' with magazine cutouts of different expressions, labeling each one."",
+      ""Conduct a post-intervention assessment activity.""
+    ]
+  },
+  ""success_metrics"": {
+    ""quantitative"": [
+      ""Increase the class average EMT3 (Expression Labeling) score from 23.80% to over 55%."",
+      ""85% of students can correctly label at least 10 different emotional expressions from pictures."",
+      ""A 50% increase in the observed use of specific emotion words (beyond happy/sad/mad) by students during classroom activities.""
+    ],
+    ""qualitative"": [
+      ""Students show increased confidence and speed when asked to name an emotion."",
+      ""Students begin to use a wider variety of emotion words spontaneously in conversations and writing."",
+      ""An overall increase in positive peer interactions related to understanding and validating others' feelings.""
+    ],
+    ""assessment_methods"": [
+      ""A post-intervention quiz mirroring the EMT3 assessment format (showing facial expressions and asking for the correct word label)."",
+      ""Teacher observation checklist to track individual student's use of new emotion vocabulary during designated activities and free play."",
+      ""Review of 'My Feelings Diary' entries to assess the appropriate use and variety of emotion words over the 4-week period.""
+    ]
+  }
+}
+```"
+curriculum,Grade1_Emotional_Awareness_Low,Grade 1 student struggling with emotional awareness,"{""grade_level"": ""1"", ""skill_areas"": [""emotional_awareness""], ""score"": 25.0}","```json
+{
+  ""planTitle"": ""My Awesome Feelings & Friendship Growth Plan"",
+  ""studentInfo"": {
+    ""gradeLevel"": ""3rd Grade"",
+    ""focusAreas"": [
+      ""Self-Awareness"",
+      ""Self-Management"",
+      ""Relationship Skills""
+    ],
+    ""currentScore"": ""55%""
+  },
+  ""introduction"": ""Welcome to your feelings adventure! This plan is full of fun activities to help you become an expert on your own feelings, learn cool ways to handle them, and be an amazing friend to others. Let's grow together!"",
+  ""focusAreas"": [
+    {
+      ""area"": ""Self-Awareness"",
+      ""description"": ""Learning to notice and name your feelings. It's like becoming a feelings detective!""
+    },
+    {
+      ""area"": ""Self-Management"",
+      ""description"": ""Practicing ways to handle big feelings and make thoughtful choices. You're the boss of your actions!""
+    },
+    {
+      ""area"": ""Relationship Skills"",
+      ""description"": ""Building strong friendships by learning how to share, listen, and work together as a team.""
+    }
+  ],
+  ""interventionStrategies"": [
+    {
+      ""order"": 1,
+      ""title"": ""Feelings Wheel Adventure"",
+      ""description"": ""Explore a colorful 'Feelings Wheel' to learn new words for our emotions. Knowing what you feel is the first step to understanding yourself better!"",
+      ""focusArea"": ""Self-Awareness"",
+      ""implementationSteps"": [
+        ""Introduce the Feelings Wheel, pointing to simple feelings like 'happy' or 'sad' in the center."",
+        ""Explore the outer parts of the wheel, connecting new feeling words (like 'proud' or 'lonely') to the main ones."",
+        ""Share a time you felt one of the new feeling words and invite the student to share one too."",
+        ""Use the wheel for a daily 'feelings check-in', where the student can point to how they are feeling.""
+      ],
+      ""successMetrics"": [
+        ""Student can identify and name 3+ emotions beyond the basics (happy, sad, mad)."",
+        ""Student voluntarily uses the Feelings Wheel to express their emotions during check-ins.""
+      ]
+    },
+    {
+      ""order"": 2,
+      ""title"": ""Belly Breathing Buddies"",
+      ""description"": ""Learn a simple breathing exercise with a 'breathing buddy' (like a small stuffed animal) to help feel calm and focused when emotions get big."",
+      ""focusArea"": ""Self-Management"",
+      ""implementationSteps"": [
+        ""Have the student lie down comfortably and place a small stuffed animal on their belly."",
+        ""Ask them to breathe in slowly through their nose and watch their 'buddy' rise gently."",
+        ""Then, ask them to breathe out slowly through their mouth and watch their 'buddy' go down."",
+        ""Practice taking five 'buddy breaths' together, especially during calm moments to build the skill.""
+      ],
+      ""successMetrics"": [
+        ""Student can demonstrate the Belly Breathing technique correctly."",
+        ""Student independently chooses to use Belly Breathing when feeling overwhelmed or upset."",
+        ""Student reports feeling calmer after practicing the breathing exercise.""
+      ]
+    },
+    {
+      ""order"": 3,
+      ""title"": ""Friendship Role-Play Fun"",
+      ""description"": ""Act out different situations with friends, like sharing, taking turns, or asking to join a game. Practicing helps us learn what to say and do!"",
+      ""focusArea"": ""Relationship Skills"",
+      ""implementationSteps"": [
+        ""Choose a simple, common scenario, such as 'asking to join a game on the playground'."",
+        ""Brainstorm friendly words and phrases to use, like 'Hi, that looks fun! Can I play too?'."",
+        ""Take turns role-playing the scenario, with one person practicing asking and the other responding kindly."",
+        ""Talk about how it felt and celebrate the great communication skills used by both players.""
+      ],
+      ""successMetrics"": [
+        ""Student successfully uses positive language (e.g., 'please', 'thank you', kind tone) during role-play."",
+        ""Student is observed applying a practiced skill during natural peer interactions in the classroom or playground.""
+      ]
+    }
+  ]
+}
+```"
+curriculum,Grade2_Mixed_Skills_Moderate,Grade 2 student with moderate skills in multiple areas,"{""grade_level"": ""2"", ""skill_areas"": [""emotional_awareness"", ""emotional_regulation""], ""score"": 65.0}","```json
+{
+  ""planTitle"": ""Emotional Superpowers Growth Plan"",
+  ""studentInfo"": {
+    ""gradeLevel"": ""{grade_level}"",
+    ""focusAreas"": ""{skill_areas}"",
+    ""currentScore"": ""{score}%""
+  },
+  ""introduction"": {
+    ""greeting"": ""Hello, Super Student!"",
+    ""overview"": ""This is your special plan to grow your 'emotional superpowers'! We'll explore fun ways to understand our feelings and become even better friends. Let's start this exciting adventure together!""
+  },
+  ""interventionStrategies"": [
+    {
+      ""strategyId"": ""EI-015"",
+      ""order"": 1,
+      ""title"": ""My Feelings Thermometer"",
+      ""description"": ""A fun, visual tool to help us notice how big or small our feelings are. We can see if a feeling is 'cool' and calm or 'hot' and intense, helping us understand our emotions better."",
+      ""implementationSteps"": [
+        ""Introduce a colorful thermometer visual, from blue (calm) to red (very strong feeling)."",
+        ""Brainstorm different feelings and talk about where they might fit on the thermometer."",
+        ""Practice checking in during the day, asking 'Where is your feeling on the thermometer right now?'"",
+        ""Connect the 'hot' zone to choosing a calming activity to cool down.""
+      ],
+      ""successMetrics"": [
+        ""Student can identify and point to their feeling level on the thermometer."",
+        ""Student begins to use feeling words to describe their emotional state (e.g., 'I feel yellow')."",
+        ""Student recognizes when their feelings are becoming more intense.""
+      ]
+    },
+    {
+      ""strategyId"": ""EI-005"",
+      ""order"": 2,
+      ""title"": ""Calm Down with a Breathing Buddy"",
+      ""description"": ""We'll use a favorite stuffed animal to learn a special breathing trick! Watching our buddy rise and fall on our tummy helps us take slow, deep breaths to feel calm and centered."",
+      ""implementationSteps"": [
+        ""Choose a small, soft stuffed animal to be a 'breathing buddy'."",
+        ""Find a comfy spot to lie down and place the buddy on your tummy."",
+        ""Breathe in slowly through your nose for 3 seconds, making the buddy rise up high."",
+        ""Breathe out slowly through your mouth for 4 seconds, letting the buddy gently float down.""
+      ],
+      ""successMetrics"": [
+        ""Student can complete three 'buddy breaths' independently."",
+        ""Student chooses to use the breathing buddy or technique when feeling overwhelmed or upset."",
+        ""Student reports feeling calmer after practicing the breathing exercise.""
+      ]
+    },
+    {
+      ""strategyId"": ""EI-008"",
+      ""order"": 3,
+      ""title"": ""Walking in Someone Else's Shoes"",
+      ""description"": ""Let's become emotion detectives! We will look at pictures or read short stories and try to guess how the characters are feeling and why. This helps us understand our friends better."",
+      ""implementationSteps"": [
+        ""Share a picture or short story showing a clear social situation."",
+        ""Ask, 'How do you think this person is feeling? What clues tell you that?'"",
+        ""Wonder together, 'What might have happened to make them feel that way?'"",
+        ""Brainstorm kind and helpful things we could say or do for that person.""
+      ],
+      ""successMetrics"": [
+        ""Student can name a possible feeling for a character in a story or picture."",
+        ""Student can suggest a reason why a character might be feeling a certain way."",
+        ""Student begins to show more curiosity about how their peers are feeling.""
+      ]
+    }
+  ]
+}
+```"
+curriculum,Grade5_Anger_Management_High,Grade 5 student with high skills needing advanced anger management,"{""grade_level"": ""5"", ""skill_areas"": [""anger_management"", ""emotional_regulation""], ""score"": 85.0}","```json
+{
+  ""planTitle"": ""Emotional Intelligence Growth Plan"",
+  ""studentInfo"": {
+    ""gradeLevel"": ""3rd Grade"",
+    ""focusAreas"": [
+      ""Self-Awareness"",
+      ""Self-Management"",
+      ""Social Awareness""
+    ],
+    ""currentScore"": 45
+  },
+  ""interventions"": [
+    {
+      ""interventionId"": ""feelings_wheel_01"",
+      ""strategyTitle"": ""Exploring Our Feelings Wheel"",
+      ""description"": ""A fun activity to learn new words for our feelings! We use a colorful wheel to explore different emotions and talk about times we have felt them. This helps us understand ourselves better."",
+      ""implementationSteps"": [
+        ""Introduce a colorful, age-appropriate feelings wheel chart."",
+        ""Choose a 'feeling of the day' and discuss what it means as a group."",
+        ""Encourage students to share a time they felt that way, using 'I feel...' statements."",
+        ""Connect the feeling to simple body sensations, like 'excited feels like butterflies in my tummy'.""
+      ],
+      ""successMetrics"": [
+        ""Student can name 3-5 new feeling words."",
+        ""Student uses 'I feel...' statements to express emotions during class activities.""
+      ],
+      ""durationMinutes"": 15,
+      ""frequency"": ""Twice a week""
+    },
+    {
+      ""interventionId"": ""mindful_breathing_02"",
+      ""strategyTitle"": ""Belly Breathing Buddies"",
+      ""description"": ""A calming exercise to help us pause when we have big feelings. We use a 'breathing buddy' (like a small toy) to help us focus on our breath and feel more relaxed and in control."",
+      ""implementationSteps"": [
+        ""Ask the student to lie down comfortably on their back in a quiet space."",
+        ""Place a small stuffed animal or 'breathing buddy' on their belly."",
+        ""Instruct them to breathe in slowly through their nose, watching the buddy rise."",
+        ""Guide them to breathe out slowly through their mouth, watching the buddy fall.""
+      ],
+      ""successMetrics"": [
+        ""Student independently uses the breathing technique when feeling overwhelmed or upset."",
+        ""Student can describe how their body feels before and after the exercise."",
+        ""Student can lead a peer through one round of belly breathing.""
+      ],
+      ""durationMinutes"": 5,
+      ""frequency"": ""Daily""
+    },
+    {
+      ""interventionId"": ""role_playing_03"",
+      ""strategyTitle"": ""Friendship Problem-Solving"",
+      ""description"": ""Let's practice being a great friend! We'll act out short, common situations, like sharing or disagreements, and find kind and helpful ways to solve problems together as a team."",
+      ""implementationSteps"": [
+        ""Present a simple, relatable scenario (e.g., 'Two friends want the same swing')."",
+        ""Assign roles to students or use puppets to act out the situation."",
+        ""Pause the scene and ask guiding questions like, 'How do you think they feel?'"",
+        ""Brainstorm and practice positive solutions together, like taking turns or finding a new game.""
+      ],
+      ""successMetrics"": [
+        ""Student can accurately identify the feelings of the characters in a scenario."",
+        ""Student suggests at least one positive, kind solution to a peer conflict during the activity.""
+      ],
+      ""durationMinutes"": 20,
+      ""frequency"": ""Once a week""
+    }
+  ]
+}
+```"

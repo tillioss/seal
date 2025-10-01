@@ -1,0 +1,1154 @@
+[
+  {
+    "name": "CURR_1_emotional_awareness_CLASS_1_4N_2023",
+    "input_data": {
+      "grade_level": "1",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 50.0
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 1 emotional_awareness intervention",
+    "grade_level": "1",
+    "characteristics": {
+      "learning_environment": "traditional",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 0,
+      "english_learners": 1,
+      "behavioral_challenges": "high",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_1_emotional_awareness_CLASS_1_9I_2024",
+    "input_data": {
+      "grade_level": "1",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 87.8
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 1 emotional_awareness intervention",
+    "grade_level": "1",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "medium",
+      "special_needs_students": 2,
+      "english_learners": 5,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_1_emotional_awareness_CLASS_1_5Z_2023",
+    "input_data": {
+      "grade_level": "1",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 44.5
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 1 emotional_awareness intervention",
+    "grade_level": "1",
+    "characteristics": {
+      "learning_environment": "traditional",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 3,
+      "english_learners": 7,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_1_emotional_awareness_CLASS_1_7A_2024",
+    "input_data": {
+      "grade_level": "1",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 53.9
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 1 emotional_awareness intervention",
+    "grade_level": "1",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 3,
+      "english_learners": 0,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_1_emotional_awareness_CLASS_1_2S_2023",
+    "input_data": {
+      "grade_level": "1",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 50.8
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 1 emotional_awareness intervention",
+    "grade_level": "1",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 0,
+      "english_learners": 4,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_1_emotional_awareness_CLASS_1_4P_2023",
+    "input_data": {
+      "grade_level": "1",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 54.8
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 1 emotional_awareness intervention",
+    "grade_level": "1",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 3,
+      "english_learners": 5,
+      "behavioral_challenges": "high",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_1_emotional_awareness_CLASS_1_9Y_2023",
+    "input_data": {
+      "grade_level": "1",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 62.9
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 1 emotional_awareness intervention",
+    "grade_level": "1",
+    "characteristics": {
+      "learning_environment": "traditional",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 1,
+      "english_learners": 3,
+      "behavioral_challenges": "low",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_1_emotional_awareness_CLASS_1_9N_2024",
+    "input_data": {
+      "grade_level": "1",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 51.4
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 1 emotional_awareness intervention",
+    "grade_level": "1",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 1,
+      "english_learners": 2,
+      "behavioral_challenges": "high",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_awareness_CLASS_2_4X_2023",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 88.8
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_awareness intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "medium",
+      "special_needs_students": 0,
+      "english_learners": 1,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_regulation_CLASS_2_4X_2023",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 88.9
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_regulation intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "medium",
+      "special_needs_students": 0,
+      "english_learners": 1,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_awareness_CLASS_2_1M_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 60.8
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_awareness intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "medium",
+      "special_needs_students": 4,
+      "english_learners": 5,
+      "behavioral_challenges": "high",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_regulation_CLASS_2_1M_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 70.6
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_regulation intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "medium",
+      "special_needs_students": 4,
+      "english_learners": 5,
+      "behavioral_challenges": "high",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_awareness_CLASS_2_1M_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 75.3
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_awareness intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 1,
+      "english_learners": 3,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_regulation_CLASS_2_1M_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 66.5
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_regulation intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 1,
+      "english_learners": 3,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_awareness_CLASS_2_7P_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 51.6
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_awareness intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 3,
+      "english_learners": 4,
+      "behavioral_challenges": "high",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_regulation_CLASS_2_7P_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 51.9
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_regulation intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 3,
+      "english_learners": 4,
+      "behavioral_challenges": "high",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_awareness_CLASS_2_3Q_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 67.4
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_awareness intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 4,
+      "english_learners": 2,
+      "behavioral_challenges": "low",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_regulation_CLASS_2_3Q_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 79.6
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_regulation intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 4,
+      "english_learners": 2,
+      "behavioral_challenges": "low",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_awareness_CLASS_2_5O_2023",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 75.8
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_awareness intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 2,
+      "english_learners": 1,
+      "behavioral_challenges": "low",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_regulation_CLASS_2_5O_2023",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 69.3
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_regulation intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 2,
+      "english_learners": 1,
+      "behavioral_challenges": "low",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_awareness_CLASS_2_1W_2023",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 66.5
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_awareness intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 0,
+      "english_learners": 2,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_regulation_CLASS_2_1W_2023",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 75.8
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_regulation intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 0,
+      "english_learners": 2,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_awareness_CLASS_2_7Z_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 85.1
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_awareness intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 1,
+      "english_learners": 6,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_2_emotional_regulation_CLASS_2_7Z_2024",
+    "input_data": {
+      "grade_level": "2",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 73.8
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 2 emotional_regulation intervention",
+    "grade_level": "2",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 1,
+      "english_learners": 6,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_awareness_CLASS_5_2G_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 65.5
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_awareness intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 2,
+      "english_learners": 3,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_regulation_CLASS_5_2G_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 78.5
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_regulation intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 2,
+      "english_learners": 3,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_anger_management_CLASS_5_2G_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "anger_management"
+      ],
+      "score": 85.8
+    },
+    "expected_focus_areas": [
+      "Anger Management"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 anger_management intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 2,
+      "english_learners": 3,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_awareness_CLASS_5_4M_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 55.5
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_awareness intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 0,
+      "english_learners": 4,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_regulation_CLASS_5_4M_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 60.7
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_regulation intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 0,
+      "english_learners": 4,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_anger_management_CLASS_5_4M_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "anger_management"
+      ],
+      "score": 62.1
+    },
+    "expected_focus_areas": [
+      "Anger Management"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 anger_management intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 0,
+      "english_learners": 4,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_awareness_CLASS_5_9O_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 87.7
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_awareness intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 3,
+      "english_learners": 6,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_regulation_CLASS_5_9O_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 79.0
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_regulation intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 3,
+      "english_learners": 6,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_anger_management_CLASS_5_9O_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "anger_management"
+      ],
+      "score": 79.9
+    },
+    "expected_focus_areas": [
+      "Anger Management"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 anger_management intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 3,
+      "english_learners": 6,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_awareness_CLASS_5_8B_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 78.2
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_awareness intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 1,
+      "english_learners": 2,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_regulation_CLASS_5_8B_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 95.5
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_regulation intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 1,
+      "english_learners": 2,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_5_anger_management_CLASS_5_8B_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "anger_management"
+      ],
+      "score": 94.3
+    },
+    "expected_focus_areas": [
+      "Anger Management"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 anger_management intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 1,
+      "english_learners": 2,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_awareness_CLASS_5_8O_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 73.5
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_awareness intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 4,
+      "english_learners": 8,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_regulation_CLASS_5_8O_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 80.2
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_regulation intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 4,
+      "english_learners": 8,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_anger_management_CLASS_5_8O_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "anger_management"
+      ],
+      "score": 86.5
+    },
+    "expected_focus_areas": [
+      "Anger Management"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 anger_management intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 4,
+      "english_learners": 8,
+      "behavioral_challenges": "moderate",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_awareness_CLASS_5_2E_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 64.4
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_awareness intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 3,
+      "english_learners": 3,
+      "behavioral_challenges": "low",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_regulation_CLASS_5_2E_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 65.0
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_regulation intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 3,
+      "english_learners": 3,
+      "behavioral_challenges": "low",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_anger_management_CLASS_5_2E_2023",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "anger_management"
+      ],
+      "score": 81.0
+    },
+    "expected_focus_areas": [
+      "Anger Management"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 anger_management intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "progressive",
+      "socioeconomic_diversity": "high",
+      "special_needs_students": 3,
+      "english_learners": 3,
+      "behavioral_challenges": "low",
+      "parent_involvement": "low"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_awareness_CLASS_5_3I_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 63.3
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_awareness intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "medium",
+      "special_needs_students": 2,
+      "english_learners": 5,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_regulation_CLASS_5_3I_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 87.9
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_regulation intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "medium",
+      "special_needs_students": 2,
+      "english_learners": 5,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_anger_management_CLASS_5_3I_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "anger_management"
+      ],
+      "score": 72.3
+    },
+    "expected_focus_areas": [
+      "Anger Management"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 anger_management intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "medium",
+      "special_needs_students": 2,
+      "english_learners": 5,
+      "behavioral_challenges": "low",
+      "parent_involvement": "high"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_awareness_CLASS_5_1F_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_awareness"
+      ],
+      "score": 54.1
+    },
+    "expected_focus_areas": [
+      "Emotional Awareness"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_awareness intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 2,
+      "english_learners": 2,
+      "behavioral_challenges": "high",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_5_emotional_regulation_CLASS_5_1F_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "emotional_regulation"
+      ],
+      "score": 66.3
+    },
+    "expected_focus_areas": [
+      "Emotional Regulation"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 emotional_regulation intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 2,
+      "english_learners": 2,
+      "behavioral_challenges": "high",
+      "parent_involvement": "medium"
+    }
+  },
+  {
+    "name": "CURR_5_anger_management_CLASS_5_1F_2024",
+    "input_data": {
+      "grade_level": "5",
+      "skill_areas": [
+        "anger_management"
+      ],
+      "score": 74.1
+    },
+    "expected_focus_areas": [
+      "Anger Management"
+    ],
+    "test_type": "curriculum",
+    "description": "Grade 5 anger_management intervention",
+    "grade_level": "5",
+    "characteristics": {
+      "learning_environment": "mixed",
+      "socioeconomic_diversity": "low",
+      "special_needs_students": 2,
+      "english_learners": 2,
+      "behavioral_challenges": "high",
+      "parent_involvement": "medium"
+    }
+  }
+]

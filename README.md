@@ -224,6 +224,35 @@ curl -N -X POST http://localhost:8000/stream \
   -d '{"scores":{"EMT1":[35,40,38]}, "metadata":{"class_id":"A1","deficient_area":"EMT1","num_students":25}}'
 ```
 
+#### Implementation Details
+
+The streaming endpoint is implemented using:
+
+1. **Server-Sent Events (SSE)**: FastAPI's `StreamingResponse` with `media_type="text/event-stream"` sends events in the SSE format (`data: {...}\n\n`)
+
+2. **StreamingModel Wrapper**: A custom wrapper class (`app/llm/gateway.py`) that encapsulates Gemini's `GenerativeModel` and provides an async `stream()` method:
+   - Uses Gemini's `generate_content()` with `stream=True`
+   - Yields text chunks as they arrive from the API
+   - Handles errors and logging
+
+3. **Async Generator Pattern**: The endpoint uses an async generator function (`event_stream()`) that:
+   - Calls `build_prompt_and_model()` to get the model instance and formatted prompt
+   - Iterates over tokens from `model.stream(prompt)`
+   - Formats each token as an SSE event: `data: {"token": "..."}\n\n`
+   - Sends a final completion event: `data: {"status": "complete"}\n\n`
+
+4. **Prompt Building**: The `build_prompt_and_model()` function:
+   - Validates the payload using `InterventionRequest` schema
+   - Automatically fills missing EMT score fields with empty lists
+   - Calculates EMT score averages
+   - Builds the prompt using `InterventionPrompt.get_prompt()` from `tilli_prompts`
+   - Returns a tuple of `(StreamingModel, prompt_string)`
+
+**Code Structure:**
+- Endpoint: `app/api/endpoints/stream.py`
+- Streaming logic: `app/llm/gateway.py` (StreamingModel class and build_prompt_and_model function)
+- Router registration: `app/main.py`
+
 ### 4. Health Check
 
 ```bash

@@ -71,6 +71,7 @@ Comprehensive content validation to ensure all AI-generated content is appropria
 - JSON schema validation
 - Automatic retries with exponential backoff
 - Health check endpoint
+- **Streaming support** - Real-time token streaming via Server-Sent Events (SSE)
 - Structured logging
 - CORS support
 - Data privacy compliance (aggregated scores only sent to AI)
@@ -174,7 +175,56 @@ Example request:
 }
 ```
 
-### 3. Health Check
+### 3. Streaming Intervention Plan (Server-Sent Events)
+
+```bash
+POST /stream
+```
+
+Generates an intervention plan with real-time token streaming using Server-Sent Events (SSE). This endpoint streams partial tokens as they're generated and sends a completion message when finished.
+
+**Content-Type:** `application/json`  
+**Response:** `text/event-stream`
+
+Example request:
+
+```json
+{
+  "scores": {
+    "EMT1": [35.0, 40.0, 38.0],
+    "EMT2": [],
+    "EMT3": [],
+    "EMT4": []
+  },
+  "metadata": {
+    "class_id": "A1",
+    "deficient_area": "EMT1",
+    "num_students": 25
+  }
+}
+```
+
+Example response (streaming):
+
+```
+data: {"token": "```json\n{\n  \"analysis\": \"..."}
+data: {"token": " students are finding..."}
+data: {"token": " it challenging..."}
+...
+data: {"status": "complete"}
+```
+
+**Note:** Missing EMT score fields (EMT2, EMT3, EMT4) will be automatically filled with empty lists if not provided.
+
+**Testing with curl:**
+
+```bash
+curl -N -X POST http://localhost:8000/stream \
+  -H "Content-Type: application/json" \
+  -d '{"scores":{"EMT1":[35,40,38]}, "metadata":{"class_id":"A1","deficient_area":"EMT1","num_students":25}}'
+```
+
+### 4. Health Check
 
 ```bash
 GET /health
@@ -187,6 +237,10 @@ Returns the health status of both assessment tools and services.
 ```
 seal/
 ├── app/
+│   ├── api/
+│   │   └── endpoints/
+│   │       ├── stream.py           # Streaming endpoint implementation
+│   │       └── __init__.py
 │   ├── llm/
 │   │   ├── gateway.py              # EMT assessment tool with detailed scenarios
 │   │   ├── curriculum_gateway.py   # Curriculum assessment tool implementation
@@ -280,6 +334,8 @@ Results are saved in `test/results/` with detailed performance metrics and respo
 4. Add a user interface for easier interaction with both assessment tools
 5. Develop progress tracking and outcome measurement features
 6. Add multi-language support for diverse classrooms
+7. Enhance streaming endpoint with WebSocket support for bidirectional communication
+8. Add streaming support for curriculum endpoint
 
 ## License
 

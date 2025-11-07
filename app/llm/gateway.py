@@ -3,6 +3,7 @@ import os
 import json
 import logging
 import uuid
+from typing import Tuple, Dict, Any, AsyncGenerator
 from tenacity import retry, stop_after_attempt, wait_exponential, before_log, after_log
 import google.generativeai as genai
 from dotenv import load_dotenv
@@ -12,6 +13,15 @@ from app.schemas import InterventionRequest, InterventionPlan
 from app.prompts.intervention import InterventionPrompt
 from app.safety.guardrails import LLMSafetyValidator
 from app.safety.config import DEFAULT_SAFETY_CONFIG
+
+# Import from tilli_prompts for streaming endpoint
+try:
+    from tilli_prompts.prompts.intervention import InterventionPrompt as TilliInterventionPrompt
+    from tilli_prompts.schemas.base import InterventionRequest as TilliInterventionRequest
+except ImportError:
+    # Fallback to local imports if tilli_prompts not available
+    TilliInterventionPrompt = InterventionPrompt
+    TilliInterventionRequest = InterventionRequest
 
 logger = logging.getLogger(__name__)
 
@@ -55,7 +65,7 @@ class GeminiGateway(LLMGateway):
             raise ValueError("GOOGLE_API_KEY not found in environment variables")
         
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash-002')
+        self.model = genai.GenerativeModel('gemini-2.5-flash')
         self.generation_config = {
             "temperature": 0.3,  # Lower temperature for more structured output
             "top_p": 0.8,
@@ -189,6 +199,86 @@ class GeminiGateway(LLMGateway):
         except Exception as e:
             logger.error(f"Health check failed: {str(e)}")
             return False
+
+class StreamingModel:
+    """Wrapper for Gemini model that supports streaming."""
+    
+    def __init__(self, model_name: str = "gemini-2.5-flash"):
+        """Initialize streaming model with Gemini."""
+        load_dotenv()
+        api_key = os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            raise ValueError("GOOGLE_API_KEY not found in environment variables")
+        
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel(model_name)
+        self.model_name = model_name
+    
+    async def stream(self, prompt: str) -> AsyncGenerator[str, None]:
+        """Stream tokens from the model."""
+        try:
+            # Use Gemini's streaming API
+            response = self.model.generate_content(
+                prompt,
+                stream=True,
+                generation_config=genai.GenerationConfig(
+                    temperature=0.3,
+                    top_p=0.8,
+                    top_k=40,
+                    max_output_tokens=2048,
+                )
+            )
+            
+            # Yield tokens as they arrive
+            for chunk in response:
+                if chunk.text:
+                    yield chunk.text
+        except Exception as e:
+            logger.error(f"Error during streaming: {str(e)}")
+            raise
+
+
+async def build_prompt_and_model(payload: Dict[str, Any]) -> Tuple[StreamingModel, str]:
+    """
+    Build prompt and model for streaming endpoint.
+    
+    Args:
+        payload: JSON payload containing InterventionRequest data
+        
+    Returns:
+        Tuple of (model, prompt) where model supports streaming
+    """
+    # Ensure all required EMT scores are present (fill missing ones with empty lists)
+    if "scores" in payload:
+        scores = payload["scores"]
+        for emt_field in ["EMT1", "EMT2", "EMT3", "EMT4"]:
+            if emt_field not in scores:
+                scores[emt_field] = []
+    
+    # Validate / coerce payload to the schema
+    req = TilliInterventionRequest(**payload)
+    
+    # Calculate averages from scores (same as in generate_intervention)
+    scores = req.scores
+    prompt_data = {
+        'class_id': req.metadata.class_id,
+        'num_students': req.metadata.num_students,
+        'deficient_area': req.metadata.deficient_area,
+        'emt1_avg': sum(scores.EMT1) / len(scores.EMT1) if scores.EMT1 else 0.0,
+        'emt2_avg': sum(scores.EMT2) / len(scores.EMT2) if scores.EMT2 else 0.0,
+        'emt3_avg': sum(scores.EMT3) / len(scores.EMT3) if scores.EMT3 else 0.0,
+        'emt4_avg': sum(scores.EMT4) / len(scores.EMT4) if scores.EMT4 else 0.0,
+    }
+    
+    # Build prompt (provider 'gemini' assumed)
+    prompt = TilliInterventionPrompt.get_prompt(provider="gemini", data=prompt_data)
+    
+    # Acquire the model client
+    model_name = os.getenv("GENERATOR_MODEL", "gemini-2.5-flash")
+    model = StreamingModel(model_name=model_name)
+    
+    return model, prompt
+
 
 class LLMGatewayFactory:
     """Factory for creating LLM gateway instances."""

@@ -12,6 +12,7 @@ from app.schemas import InterventionRequest, InterventionPlan, HealthResponse
 from app.schemas.curriculum import CurriculumRequest, CurriculumResponse
 from app.llm.gateway import LLMGatewayFactory
 from app.llm.curriculum_gateway import GeminiCurriculumGateway
+from app.api.endpoints import stream
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -43,13 +44,21 @@ app = FastAPI(
 )
 
 # Add CORS middleware
+origins = [
+    "http://localhost:8501",
+    "http://127.0.0.1:8501",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include routers
+app.include_router(stream.router, tags=["stream"])
 
 @app.post("/score", response_model=InterventionPlan)
 async def generate_intervention_plan(request: InterventionRequest):

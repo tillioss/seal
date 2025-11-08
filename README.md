@@ -261,6 +261,27 @@ GET /health
 
 Returns the health status of both assessment tools and services.
 
+**Response Format:**
+```json
+{
+  "status": "healthy" | "degraded",
+  "version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_healthy": true | false,
+  "curriculum_healthy": true | false
+}
+```
+
+**Status Codes:**
+- `200 OK`: Service is running (may be "healthy" or "degraded" status)
+- The endpoint always returns HTTP 200 when the service is accessible, even if some components (LLM, curriculum gateway) are temporarily unavailable
+
+**Status Values:**
+- `"healthy"`: Both LLM and curriculum gateways are operational
+- `"degraded"`: Service is running but one or more components are unavailable
+
+**Note:** The health check endpoint is designed to verify service accessibility rather than requiring all components to be fully operational. This allows clients to detect if the API is running even if the underlying LLM services are temporarily unavailable.
+
 ## Project Structure
 
 ```

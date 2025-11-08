@@ -152,8 +152,11 @@ mypy .
 
 3. **Health Checks**:
    - `/health` endpoint for service health
+   - Returns HTTP 200 when service is accessible (status may be "healthy" or "degraded")
+   - Component-level health status (llm_healthy, curriculum_healthy)
    - LLM availability monitoring
    - Resource usage tracking
+   - **Note**: The health endpoint is designed to verify service accessibility rather than requiring all components to be fully operational, allowing clients to detect if the API is running even if underlying services are temporarily unavailable
 
 ### Scaling Considerations
 

@@ -67,4 +67,6 @@ class InterventionPlan(BaseModel):
 class HealthResponse(BaseModel):
     status: str = Field(..., description="Service health status")
     version: str = Field(..., description="Service version")
-    llm_provider: str = Field(..., description="Current LLM provider") 
+    llm_provider: str = Field(..., description="Current LLM provider")
+    llm_healthy: Optional[bool] = Field(None, description="LLM gateway health status")
+    curriculum_healthy: Optional[bool] = Field(None, description="Curriculum gateway health status") 

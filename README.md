@@ -9,6 +9,33 @@ SEAL is a REST API service that helps educators create personalized intervention
 1. **EMT Assessment Tool (Q1)** - Analyzes class performance data across four EMT areas with detailed scenario-based interventions
 2. **Curriculum Assessment Tool (Q2)** - Provides grade-appropriate emotional learning activities based on skill areas and performance scores
 
+### System Architecture
+
+```
+             ┌──────────────────────────────┐
+             │  🧠 Prompt-Eval-Tool (UI)    │
+             │  - Streamlit frontend        │
+             │  - SEALAPIClient             │
+             │  - Imports shared prompts    │
+             └─────────────┬────────────────┘
+                           │  REST API calls (/score, /curriculum)
+                           │  JSON requests/responses
+                           ▼
+             ┌──────────────────────────────┐
+             │  ⚙️ SEAL API (FastAPI)       │
+             │  - Processes student scores  │
+             │  - Generates interventions   │
+             │  - Optional SSE at /stream   │
+             └─────────────┬────────────────┘
+                           │  Shared prompts & schemas
+             ┌─────────────┴────────────────┐
+             │  📦 tilli-prompts package    │
+             │  - Shared schemas            │
+             │  - Shared prompt templates   │
+             │  - Used by SEAL & UI         │
+             └──────────────────────────────┘
+```
+
 ## Features
 
 ### EMT Assessment Tool - Detailed Scenario-Based Interventions

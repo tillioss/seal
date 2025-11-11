@@ -11,30 +11,42 @@
 - Documentation gaps remain (`SETUP.md`, troubleshooting steps, dependency checks).
 
 ```mermaid
-flowchart LR
+flowchart TB
+
     subgraph Shared Package
         TP[tilli-prompts<br/>schemas + prompts + logging + config]
     end
-    subgraph SEAL
-        S1[app/main.py]
-        S2[app/llm/gateway.py]
-        S3[app/llm/curriculum_gateway.py]
-        API[/FastAPI endpoints/]
+
+    subgraph SEAL_API
+        direction TB
+        GW[llm/gateway.py]
+        CURR[llm/curriculum_gateway.py]
+        STREAM[/POST /stream (FastAPI endpoint)/]
     end
+
     subgraph PromptEval
-        PE1[streamlit app.py]
-        PE2[judge.py + logging]
+        direction TB
+        UI[Streamlit app.py]
+        EVAL[judge.py + logging]
     end
 
-    TP --> S1
-    TP --> S2
-    TP --> S3
-    TP --> PE1
-    TP --> PE2
+    TP --> GW
+    TP --> CURR
+    TP --> UI
+    TP --> EVAL
 
-    S2 --> API
-    PE1 -->|Fetch or paste outputs| PE2
-    PE2 -->|future| API
+    %% Streaming data flow
+    UI -->|Send JSON payload (scores, metadata)| STREAM
+    STREAM -->|Streamed results (tokens)| UI
+    STREAM -->|Structured plan (JSON)| EVAL
+
+    %% Future API integration
+    EVAL -->|Optional: /evaluate endpoint| STREAM
+
+    %% Visual emphasis on shared base
+    GW -.-> TP
+    CURR -.-> TP
+    EVAL -.-> TP
 ```
 
 ## Proposed Work Breakdown

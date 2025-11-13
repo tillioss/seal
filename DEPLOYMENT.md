@@ -40,6 +40,7 @@ This guide covers development setup, testing, and deployment instructions for th
 4. **API Documentation**:
    - Swagger UI: http://localhost:8000/docs
    - ReDoc: http://localhost:8000/redoc
+   - Test streaming endpoint: `curl -N -X POST http://localhost:8000/stream -H "Content-Type: application/json" -d '{"scores":{"EMT1":[35,40,38]}, "metadata":{"class_id":"A1","deficient_area":"EMT1","num_students":25}}'`
 
 ### Code Style and Quality
 
@@ -151,8 +152,11 @@ mypy .
 
 3. **Health Checks**:
    - `/health` endpoint for service health
+   - Returns HTTP 200 when service is accessible (status may be "healthy" or "degraded")
+   - Component-level health status (llm_healthy, curriculum_healthy)
    - LLM availability monitoring
    - Resource usage tracking
+   - **Note**: The health endpoint is designed to verify service accessibility rather than requiring all components to be fully operational, allowing clients to detect if the API is running even if underlying services are temporarily unavailable
 
 ### Scaling Considerations
 

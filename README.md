@@ -9,6 +9,33 @@ SEAL is a REST API service that helps educators create personalized intervention
 1. **EMT Assessment Tool (Q1)** - Analyzes class performance data across four EMT areas with detailed scenario-based interventions
 2. **Curriculum Assessment Tool (Q2)** - Provides grade-appropriate emotional learning activities based on skill areas and performance scores
 
+### System Architecture
+
+```
+             ┌──────────────────────────────┐
+             │  🧠 Prompt-Eval-Tool (UI)    │
+             │  - Streamlit frontend        │
+             │  - SEALAPIClient             │
+             │  - Imports shared prompts    │
+             └─────────────┬────────────────┘
+                           │  REST API calls (/score, /curriculum)
+                           │  JSON requests/responses
+                           ▼
+             ┌──────────────────────────────┐
+             │  ⚙️ SEAL API (FastAPI)       │
+             │  - Processes student scores  │
+             │  - Generates interventions   │
+             │  - Optional SSE at /stream   │
+             └─────────────┬────────────────┘
+                           │  Shared prompts & schemas
+             ┌─────────────┴────────────────┐
+             │  📦 tilli-prompts package    │
+             │  - Shared schemas            │
+             │  - Shared prompt templates   │
+             │  - Used by SEAL & UI         │
+             └──────────────────────────────┘
+```
+
 ## Features
 
 ### EMT Assessment Tool - Detailed Scenario-Based Interventions
@@ -71,6 +98,7 @@ Comprehensive content validation to ensure all AI-generated content is appropria
 - JSON schema validation
 - Automatic retries with exponential backoff
 - Health check endpoint
+- **Streaming support** - Real-time token streaming via Server-Sent Events (SSE)
 - Structured logging
 - CORS support
 - Data privacy compliance (aggregated scores only sent to AI)
@@ -174,7 +202,85 @@ Example request:
 }
 ```
 
-### 3. Health Check
+### 3. Streaming Intervention Plan (Server-Sent Events)
+
+```bash
+POST /stream
+```
+
+Generates an intervention plan with real-time token streaming using Server-Sent Events (SSE). This endpoint streams partial tokens as they're generated and sends a completion message when finished.
+
+**Content-Type:** `application/json`  
+**Response:** `text/event-stream`
+
+Example request:
+
+```json
+{
+  "scores": {
+    "EMT1": [35.0, 40.0, 38.0],
+    "EMT2": [],
+    "EMT3": [],
+    "EMT4": []
+  },
+  "metadata": {
+    "class_id": "A1",
+    "deficient_area": "EMT1",
+    "num_students": 25
+  }
+}
+```
+
+Example response (streaming):
+
+```
+data: {"token": "```json\n{\n  \"analysis\": \"..."}
+data: {"token": " students are finding..."}
+data: {"token": " it challenging..."}
+...
+data: {"status": "complete"}
+```
+
+**Note:** Missing EMT score fields (EMT2, EMT3, EMT4) will be automatically filled with empty lists if not provided.
+
+**Testing with curl:**
+
+```bash
+curl -N -X POST http://localhost:8000/stream \
+  -H "Content-Type: application/json" \
+  -d '{"scores":{"EMT1":[35,40,38]}, "metadata":{"class_id":"A1","deficient_area":"EMT1","num_students":25}}'
+```
+
+#### Implementation Details
+
+The streaming endpoint is implemented using:
+
+1. **Server-Sent Events (SSE)**: FastAPI's `StreamingResponse` with `media_type="text/event-stream"` sends events in the SSE format (`data: {...}\n\n`)
+
+2. **StreamingModel Wrapper**: A custom wrapper class (`app/llm/gateway.py`) that encapsulates Gemini's `GenerativeModel` and provides an async `stream()` method:
+   - Uses Gemini's `generate_content()` with `stream=True`
+   - Yields text chunks as they arrive from the API
+   - Handles errors and logging
+
+3. **Async Generator Pattern**: The endpoint uses an async generator function (`event_stream()`) that:
+   - Calls `build_prompt_and_model()` to get the model instance and formatted prompt
+   - Iterates over tokens from `model.stream(prompt)`
+   - Formats each token as an SSE event: `data: {"token": "..."}\n\n`
+   - Sends a final completion event: `data: {"status": "complete"}\n\n`
+
+4. **Prompt Building**: The `build_prompt_and_model()` function:
+   - Validates the payload using `InterventionRequest` schema
+   - Automatically fills missing EMT score fields with empty lists
+   - Calculates EMT score averages
+   - Builds the prompt using `InterventionPrompt.get_prompt()` from `tilli_prompts`
+   - Returns a tuple of `(StreamingModel, prompt_string)`
+
+**Code Structure:**
+- Endpoint: `app/api/endpoints/stream.py`
+- Streaming logic: `app/llm/gateway.py` (StreamingModel class and build_prompt_and_model function)
+- Router registration: `app/main.py`
+
+### 4. Health Check
 
 ```bash
 GET /health
@@ -182,11 +288,36 @@ GET /health
 
 Returns the health status of both assessment tools and services.
 
+**Response Format:**
+```json
+{
+  "status": "healthy" | "degraded",
+  "version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_healthy": true | false,
+  "curriculum_healthy": true | false
+}
+```
+
+**Status Codes:**
+- `200 OK`: Service is running (may be "healthy" or "degraded" status)
+- The endpoint always returns HTTP 200 when the service is accessible, even if some components (LLM, curriculum gateway) are temporarily unavailable
+
+**Status Values:**
+- `"healthy"`: Both LLM and curriculum gateways are operational
+- `"degraded"`: Service is running but one or more components are unavailable
+
+**Note:** The health check endpoint is designed to verify service accessibility rather than requiring all components to be fully operational. This allows clients to detect if the API is running even if the underlying LLM services are temporarily unavailable.
+
 ## Project Structure
 
 ```
 seal/
 ├── app/
+│   ├── api/
+│   │   └── endpoints/
+│   │       ├── stream.py           # Streaming endpoint implementation
+│   │       └── __init__.py
 │   ├── llm/
 │   │   ├── gateway.py              # EMT assessment tool with detailed scenarios
 │   │   ├── curriculum_gateway.py   # Curriculum assessment tool implementation
@@ -280,6 +411,8 @@ Results are saved in `test/results/` with detailed performance metrics and respo
 4. Add a user interface for easier interaction with both assessment tools
 5. Develop progress tracking and outcome measurement features
 6. Add multi-language support for diverse classrooms
+7. Enhance streaming endpoint with WebSocket support for bidirectional communication
+8. Add streaming support for curriculum endpoint
 
 ## License
 

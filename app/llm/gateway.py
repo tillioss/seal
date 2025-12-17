@@ -55,7 +55,7 @@ class GeminiGateway(LLMGateway):
             raise ValueError("GOOGLE_API_KEY not found in environment variables")
         
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash-002')
+        self.model = genai.GenerativeModel('models/gemini-2.5-pro')
         self.generation_config = {
             "temperature": 0.3,  # Lower temperature for more structured output
             "top_p": 0.8,

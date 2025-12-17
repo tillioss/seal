@@ -118,7 +118,7 @@ class GeminiCurriculumGateway(CurriculumGateway):
             raise ValueError("GOOGLE_API_KEY not found in environment variables")
         
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash-002')
+        self.model = genai.GenerativeModel('models/gemini-2.5-pro')
         
         # Initialize safety validator
         self.safety_validator = LLMSafetyValidator(DEFAULT_SAFETY_CONFIG)

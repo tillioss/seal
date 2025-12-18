@@ -51,7 +51,7 @@ OR if unsafe:
             raise ValueError("GOOGLE_API_KEY not found in environment variables")
         
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash-002')
+        self.model = genai.GenerativeModel('models/gemini-2.5-pro')
     
     def _get_config_from_env(self) -> SafetyConfig:
         """Get safety configuration based on environment."""
